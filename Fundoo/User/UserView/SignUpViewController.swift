@@ -39,17 +39,11 @@ class SignUpViewController: UIViewController {
             if isPasswordValid(passwordText.text!) {
                 if isValidEmail(testStr: emailText.text!) {
                     
-                    let appDelegate : AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
-                    let context : NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-                    let newUser = NSEntityDescription.insertNewObject(forEntityName: "User", into: context) as NSManagedObject
+                   let newUser = UserCoreDataHelper.newUser()
                     newUser.setValue(nameText.text, forKey: "name")
                     newUser.setValue(passwordText.text, forKey: "password")
                     newUser.setValue(emailText.text, forKey: "email")
-                    do {
-                        try context.save()
-                    } catch {
-                        print(" ")
-                    }
+                   UserCoreDataHelper.saveUser()
                     print(newUser)
                     print("Object Saved.")
                     let myAlert = UIAlertController (title: "Valid ", message: "Sucess ", preferredStyle: UIAlertController.Style.alert)

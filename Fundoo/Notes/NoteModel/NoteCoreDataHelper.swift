@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-struct CoreDataHelper {
+class NoteCoreDataHelper {
     static let context: NSManagedObjectContext = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError()

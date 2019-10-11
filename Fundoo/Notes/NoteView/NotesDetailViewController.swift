@@ -43,17 +43,17 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         case "save" where note != nil:
             note?.noteTitle = noteTitleField.text ?? ""
             note?.noteDescription = noteDescriptionField.text ?? ""
-            CoreDataHelper.saveNote()
+            NoteCoreDataHelper.saveNote()
             
         case "save" where note == nil:
             if noteTitleField.text == "" || noteDescriptionField.text == "" {
                 
             }
             else {
-                let note = CoreDataHelper.newNote()
+                let note = NoteCoreDataHelper.newNote()
                 note.noteTitle = noteTitleField.text ?? ""
                 note.noteDescription = noteDescriptionField.text ?? ""
-                CoreDataHelper.saveNote()
+                NoteCoreDataHelper.saveNote()
             }
         case "cancel":
             print("cancel bar button item tapped")

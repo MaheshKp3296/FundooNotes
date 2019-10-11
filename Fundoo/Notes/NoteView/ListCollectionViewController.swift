@@ -26,7 +26,7 @@ class ListCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        notes = CoreDataHelper.retrieveNotes()
+        notes = NoteCoreDataHelper.retrieveNotes()
         
     }
     
@@ -51,7 +51,7 @@ class ListCollectionViewController: UICollectionViewController {
     }
     
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
-        notes = CoreDataHelper.retrieveNotes()
+        notes = NoteCoreDataHelper.retrieveNotes()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
