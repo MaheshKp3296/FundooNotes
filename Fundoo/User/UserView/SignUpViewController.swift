@@ -19,8 +19,13 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet var confirmPasswordText: UITextField!
     
+    var presenter : SignUpPresenter?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presenter = SignUpPresenterImpl()
+        
     }
     
     @IBAction func signUpAction(_ sender: Any) {
@@ -35,17 +40,10 @@ class SignUpViewController: UIViewController {
             return
         }
         
-        if isValidInput(Input: nameText.text!) {
-            if isPasswordValid(passwordText.text!) {
-                if isValidEmail(testStr: emailText.text!) {
-                    
-                   let newUser = UserCoreDataHelper.newUser()
-                    newUser.setValue(nameText.text, forKey: "name")
-                    newUser.setValue(passwordText.text, forKey: "password")
-                    newUser.setValue(emailText.text, forKey: "email")
-                   UserCoreDataHelper.saveUser()
-                    print(newUser)
-                    print("Object Saved.")
+        if presenter!.isValidUser(nameText.text!) {
+            if presenter!.isPasswordValid(passwordText.text!) {
+                if presenter!.isValidEmail(emailText.text!) {
+                    presenter!.logIn(nameText.text!, emailText.text!, passwordText.text!)
                     let myAlert = UIAlertController (title: "Valid ", message: "Sucess ", preferredStyle: UIAlertController.Style.alert)
                     let okAction  = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { action in
                         self.dismiss(animated: true, completion: nil) }
@@ -67,24 +65,6 @@ class SignUpViewController: UIViewController {
             print("name check")
             displayAlertMessage(title: "Fill the name", message: "Enter valid username")
         }
-    }
-    
-    func isValidInput(Input:String) -> Bool {
-        let RegEx = "\\A\\w{3,18}\\z"  //  \\[A-Za-z]{3, 18}
-        let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
-        return Test.evaluate(with: Input)
-    }
-    
-    func isPasswordValid(_ password : String) -> Bool {
-        let  passwordRegex = "(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$#!%*?&])(?=.*[a-z]).{6,16}"
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
-        return passwordTest.evaluate(with: password)
-    }
-    
-    func isValidEmail(testStr:String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: testStr)
     }
     
     func displayAlertMessage(title: String, message: String) {

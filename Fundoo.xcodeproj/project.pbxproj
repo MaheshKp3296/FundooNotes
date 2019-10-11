@@ -16,6 +16,8 @@
 		CE0E6F39234DFD2400787F04 /* NoteDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E6F38234DFD2400787F04 /* NoteDetailPresenter.swift */; };
 		CE0E6F3C234DFD7000787F04 /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E6F3B234DFD7000787F04 /* NoteDetailView.swift */; };
 		CE122EF52350655400752F84 /* UserCoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE122EF42350655400752F84 /* UserCoreDataHelper.swift */; };
+		CE122EFB2350753000752F84 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE122EFA2350753000752F84 /* SignUpPresenter.swift */; };
+		CE122EFD2350853600752F84 /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE122EFC2350853600752F84 /* LogInPresenter.swift */; };
 		CE1E5AD9234756EA004EFE1F /* NotesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E5AD8234756EA004EFE1F /* NotesDetailViewController.swift */; };
 		CE7AB34C233A0E4F00F0EDD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7AB34B233A0E4F00F0EDD7 /* AppDelegate.swift */; };
 		CE7AB351233A0E4F00F0EDD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7AB34F233A0E4F00F0EDD7 /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 		CE0E6F38234DFD2400787F04 /* NoteDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteDetailPresenter.swift; path = Fundoo/Notes/NotePresenter/NoteDetailPresenter.swift; sourceTree = SOURCE_ROOT; };
 		CE0E6F3B234DFD7000787F04 /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
 		CE122EF42350655400752F84 /* UserCoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoreDataHelper.swift; sourceTree = "<group>"; };
+		CE122EFA2350753000752F84 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
+		CE122EFC2350853600752F84 /* LogInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
 		CE1E5AD8234756EA004EFE1F /* NotesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDetailViewController.swift; sourceTree = "<group>"; };
 		CE7AB348233A0E4F00F0EDD7 /* Fundoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fundoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7AB34B233A0E4F00F0EDD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 		CE122EF22350651800752F84 /* UserPresenter */ = {
 			isa = PBXGroup;
 			children = (
+				CE122EFA2350753000752F84 /* SignUpPresenter.swift */,
+				CE122EFC2350853600752F84 /* LogInPresenter.swift */,
 			);
 			path = UserPresenter;
 			sourceTree = "<group>";
@@ -255,9 +261,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE122EFD2350853600752F84 /* LogInPresenter.swift in Sources */,
 				CE0E6F3C234DFD7000787F04 /* NoteDetailView.swift in Sources */,
 				CE1E5AD9234756EA004EFE1F /* NotesDetailViewController.swift in Sources */,
 				CE0966642345E714009C6685 /* ContainerVC.swift in Sources */,
+				CE122EFB2350753000752F84 /* SignUpPresenter.swift in Sources */,
 				CE0E6F39234DFD2400787F04 /* NoteDetailPresenter.swift in Sources */,
 				CE057AD2233B696500636D0C /* UserViewController.swift in Sources */,
 				CE7AB34C233A0E4F00F0EDD7 /* AppDelegate.swift in Sources */,
