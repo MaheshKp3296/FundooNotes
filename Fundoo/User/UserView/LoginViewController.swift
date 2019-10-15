@@ -8,37 +8,46 @@
 
 import UIKit
 import CoreData
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, LoginView {
     
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
     var presenter : LogInPresenter?
-    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var message = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = LogInPresenterImpl()
+        presenter = LogInPresenterImpl(view: self)
+        presenter?.showMessage()
     }
     
+    func onFailure(message: String) {
+        self.message = message
+    }
     
     @IBAction func loginAction(_ sender: Any) {
-        let emailString = emailField.text
-        let passwordString = passwordField.text
-        let validUser = presenter?.checkUser(emailString!, passwordString!)
+        let validUser = presenter?.checkUser(emailField.text!, passwordField.text!)
         
-        if (emailString?.isEmpty)! || (passwordString?.isEmpty)! {
-            displayAlertMessage(title: "Alert", message: "Fill  all fields")
+        if areFieldsEmpty() {
+            displayAlertMessage(title: "Alert", message: "Fill all fields")
         }
         
         if validUser! {
-            let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "ContainerVCID") as UIViewController
-            present(vc, animated: true, completion: nil)
-            
+            doLogin()
         }
         else {
-            displayAlertMessage(title: "Alert", message: "Invalid email or password")
+            displayAlertMessage(title: "Alert", message: message)
         }
+    }
+    
+    private func areFieldsEmpty() -> Bool{
+        return (emailField.text!.isEmpty) || (passwordField.text!.isEmpty)
+    }
+    
+    func doLogin(){
+        let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ContainerVCID") as UIViewController
+        present(vc, animated: true, completion: nil)
     }
     
     func displayAlertMessage(title: String, message: String) {

@@ -241,4 +241,7 @@
     <resources>
         <image name="FundooLogo" width="506" height="351"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Kt4-aV-tHo"/>
+    </inferredMetricsTieBreakers>
 </document>

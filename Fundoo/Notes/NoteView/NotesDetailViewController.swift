@@ -8,14 +8,25 @@
 import UIKit
 import CoreData
 
-class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate {
+class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate, NoteDetailView {
     @IBOutlet var noteTitleField: UITextField!
     @IBOutlet var noteDescriptionField: UITextView!
+     @IBOutlet weak var colorMenuConstraint : NSLayoutConstraint!
+    
     var textViewPlaceHolder = "Note..."
-    var note : Note?
+    var note : NoteInfo?
+    
+   var notePresenter : NoteDetailPresenter?
     override func viewDidLoad() {
         super.viewDidLoad()
         noteDescriptionField.delegate = self
+        notePresenter = NoteDetailPresenterImpl(view: self)
+        
+//        isBottomMenuOpen = false
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(toggleBottomMenu),
+//                                               name: NSNotification.Name("ToggleBottomMenu"),
+//                                               object: nil)
     }
     
     func fillDetailView(note : Note) {
@@ -41,22 +52,24 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         switch identifier {
         case "save" where note != nil:
-            note?.noteTitle = noteTitleField.text ?? ""
-            note?.noteDescription = noteDescriptionField.text ?? ""
-            NoteCoreDataHelper.saveNote()
+        //    note?.noteTitle = noteTitleField.text ??  ""
+        //    note?.noteDescription = noteDescriptionField.text ?? ""
+        //   let noteInfo = NoteInfo.init(noteTitle: noteTitleField.text ?? "" , noteDescription: noteDescriptionField.text ?? "")
+       notePresenter?.updateNote(noteInfo : note!)
+           // NoteCoreDataHelper.saveNote()
             
         case "save" where note == nil:
             if noteTitleField.text == "" || noteDescriptionField.text == "" {
-                
+                return
             }
             else {
-                let note = NoteCoreDataHelper.newNote()
-                note.noteTitle = noteTitleField.text ?? ""
-                note.noteDescription = noteDescriptionField.text ?? ""
-                NoteCoreDataHelper.saveNote()
+               // let note = NoteCoreDataHelper.newNote()
+             //   note.noteTitle = noteTitleField.text ?? ""
+            //   note.noteDescription = noteDescriptionField.text ?? ""
+            let noteDetails = NoteInfo.init(noteTitle: noteTitleField.text ?? "" , noteDescription: noteDescriptionField.text ?? "" )
+            notePresenter?.createNote(noteInfo: noteDetails)
+            
             }
-        case "cancel":
-            print("cancel bar button item tapped")
             
         default:
             print("unexpected segue identifier")
@@ -77,5 +90,28 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
             textView.textColor = .lightGray
         }
     }
+    
+//    var isBottomMenuOpen : Bool! {
+//        didSet {
+//            if isBottomMenuOpen {
+//                colorMenuConstraint.constant = 0
+//            } else {
+//                colorMenuConstraint.constant = 256
+//                
+//            }
+//            UIView.animate(withDuration: 0.3) {
+//                self.view.layoutIfNeeded()
+//            }
+//        }
+//    }
+//    
+//    @objc func toggleBottomMenu() {
+//        isBottomMenuOpen = !isBottomMenuOpen
+//    }
+//    
+//    @IBAction func colorMenu(_ sender: UIBarButtonItem) {
+//        NotificationCenter.default.post(name: NSNotification.Name("ToggleBottomMenu"), object: nil)
+//    }
+    
 }
 

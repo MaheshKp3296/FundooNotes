@@ -14,7 +14,7 @@ protocol UserModel {
     func saveUser()
     func delete(user: User)
     func retrieveUsers() -> [User]
-    func addUser(_ userName : String, _ email: String, password : String )
+    func addUser(user : UserInfo )
 }
 
 class UserManager : UserModel {
@@ -46,7 +46,6 @@ class UserManager : UserModel {
     
     func delete(user: User) {
         context.delete(user)
-        
         saveUser()
     }
     
@@ -64,13 +63,21 @@ class UserManager : UserModel {
         }
     }
     
-    func addUser(_ userName : String, _ email: String, password : String ) {
+    func addUser(user : UserInfo) {
         let newUser = self.newUser()
-        newUser.setValue(userName, forKey: "name")
-        newUser.setValue(email, forKey: "email")
-        newUser.setValue(password, forKey: "password")
+        newUser.setValue(user.name, forKey: "name")
+        newUser.setValue(user.email, forKey: "email")
+        newUser.setValue(user.password, forKey: "password")
         saveUser()
     }
-    
-    
+}
+
+typealias Completion = ((Bool) -> Void)
+
+protocol UserModel1 {
+    func addUser(user : User)
+    func updateUser(user : User)
+    func deleteUser(user : User)
+    func deleteUser(id : String)
+    func getListOfUsers() -> [User]
 }

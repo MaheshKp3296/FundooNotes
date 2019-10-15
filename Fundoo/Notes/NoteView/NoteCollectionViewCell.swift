@@ -14,7 +14,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var decriptionLabel: UILabel!
     
-    func configureCell(note : Note) {
+    func configureCell(note : NoteInfo) {
         self.titleLabel.text = note.noteTitle
         self.decriptionLabel.text = note.noteDescription
     }

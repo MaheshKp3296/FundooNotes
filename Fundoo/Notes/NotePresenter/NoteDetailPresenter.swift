@@ -8,12 +8,31 @@
 
 import Foundation
 
-class NoteDetailPresenter {
+protocol NoteDetailPresenter {
+    func updateNote(noteInfo : NoteInfo)
+    func createNote(noteInfo : NoteInfo)
+}
+
+class NoteDetailPresenterImpl: NoteDetailPresenter  {
+    
+    var noteModel : NoteModel!
     private var view : NoteDetailView
     
     init(view : NoteDetailView) {
         self.view = view
     }
     
+    func createNote(noteInfo : NoteInfo){
+        //let newNote = model?.newNote()
+        noteModel = NoteManager()
+         noteModel.addNotes(note: noteInfo)
+        
+    }
+    func updateNote(noteInfo: NoteInfo){
+        noteModel = NoteManager()
+        noteModel.updateNote( noteInfo: noteInfo)
+    }
+    
+ 
     
 }

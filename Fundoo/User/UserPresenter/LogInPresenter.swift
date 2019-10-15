@@ -10,10 +10,17 @@ import Foundation
 
 protocol LogInPresenter {
     func checkUser(_ email : String , _ password : String) -> Bool
+    func showMessage()
 }
 
 class LogInPresenterImpl : LogInPresenter {
     var retrieveModel : UserModel?
+    var view :  LoginView
+    
+    init(view : LoginView){
+        self.view = view
+    }
+    
     
     func checkUser(_ email : String , _ password : String) -> Bool {
         retrieveModel = UserManager()
@@ -29,4 +36,9 @@ class LogInPresenterImpl : LogInPresenter {
         }
         return check
     }
+    
+    func showMessage(){
+        view.onFailure(message: "Invalid password or email")
+    }
+    
 }

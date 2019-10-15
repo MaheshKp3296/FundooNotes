@@ -10,26 +10,44 @@ import UIKit
 import CoreData
 private let reuseIdentifier = "Cell"
 
-class ListCollectionViewController: UICollectionViewController {
+class ListCollectionViewController: UICollectionViewController, NoteView {
+     
     
-    @IBAction func openMenu(){
+ 
+    @IBAction func openMenu() {
         print("Toggle Side Menu")
         NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
     }
     
-    var notes = [Note](){
+    var notes = [NoteInfo]()
+    {
         didSet {
             collectionView.reloadData()
+            
         }
     }
+    
+     var noteListPresenter : ListViewPresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        notes = NoteCoreDataHelper.retrieveNotes()
-        
+        //notes = NoteCoreDataHelper.retrieveNotes()
+        //collectionView.reloadData()
+    //   noteListPresenter = ListViewPresenterImpl(view: self)
+      //  noteListPresenter?.initUI()
     }
     
+    func getListOfNotes(listOfNotes: [NoteInfo]) {
+        self.notes = listOfNotes
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        noteListPresenter = ListViewPresenterImpl(view: self)
+        noteListPresenter?.initUI()
+   }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -42,7 +60,7 @@ class ListCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "noteCell", for: indexPath) as! NoteCollectionViewCell
-        let note : Note = notes[indexPath.item]
+        let note : NoteInfo = notes[indexPath.item]
         cell.configureCell(note : note)
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 1
@@ -51,7 +69,8 @@ class ListCollectionViewController: UICollectionViewController {
     }
     
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
-        notes = NoteCoreDataHelper.retrieveNotes()
+       // notes = NoteManager.retrieveNotes()
+      //  notes = (noteListPresenter?.retrieveNotes())!
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -73,5 +92,15 @@ class ListCollectionViewController: UICollectionViewController {
         }
     }
     
+    func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+        
+    }
     
-}
+    override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let temp = notes.remove(at: sourceIndexPath.item)
+        notes.insert(temp, at: destinationIndexPath.item)
+    
+        }
+    }
+
