@@ -13,6 +13,7 @@ protocol LogInPresenter {
     func showMessage()
 }
 
+@available(iOS 13.0, *)
 class LogInPresenterImpl : LogInPresenter {
     var retrieveModel : UserModel?
     var view :  LoginView

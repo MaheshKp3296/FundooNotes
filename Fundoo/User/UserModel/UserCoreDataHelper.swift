@@ -17,6 +17,7 @@ protocol UserModel {
     func addUser(user : UserInfo )
 }
 
+@available(iOS 13.0, *)
 class UserManager : UserModel {
     let context: NSManagedObjectContext = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {

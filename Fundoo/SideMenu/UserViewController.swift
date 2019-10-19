@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+@available(iOS 13.0, *)
 class UserViewController: UIViewController {
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

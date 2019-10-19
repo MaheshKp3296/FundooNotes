@@ -16,6 +16,7 @@ protocol SignUpPresenter {
 }
 
 
+@available(iOS 13.0, *)
 class SignUpPresenterImpl: SignUpPresenter {
     
     var userModel : UserModel?

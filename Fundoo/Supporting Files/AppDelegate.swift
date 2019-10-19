@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+@available(iOS 13.0, *)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        check()
         // Override point for customization after application launch.
         return true
     }
@@ -88,4 +90,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func check() {
+    if UserDefaults.standard.value(forKey: "email") != nil {
+        let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ContainerVCID") as UIViewController
+//        let navVc = UINavigationController(rootViewController: vc)
+        let share = UIApplication.shared.delegate as? AppDelegate
+        share?.window?.rootViewController = vc
+        share?.window?.makeKeyAndVisible()
+        
+    }
+    
+}
 }

@@ -17,6 +17,7 @@ class SideMenuController: UITableViewController {
         }
         
         if indexPath.row == 6 {
+            UserDefaults.standard.removeObject(forKey: "email")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "LoginVcId") as UIViewController
             present(vc, animated: true, completion: nil)

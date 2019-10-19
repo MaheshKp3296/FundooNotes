@@ -8,8 +8,10 @@
 
 import UIKit
 import CoreData
+@available(iOS 13.0, *)
 class LoginViewController: UIViewController, LoginView {
     
+    @IBOutlet var noteImage: UIImageView!
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
     var presenter : LogInPresenter?
@@ -19,6 +21,12 @@ class LoginViewController: UIViewController, LoginView {
         super.viewDidLoad()
         presenter = LogInPresenterImpl(view: self)
         presenter?.showMessage()
+//        if UserDefaults.standard.bool(forKey: "IsUserLogin") == true{
+//            let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "ContainerVCID") as UIViewController
+//            present(vc, animated: false, completion: nil)
+       // }
+     //   noteImage.image = #imageLiteral(resourceName: "NotesLogoo")
     }
     
     func onFailure(message: String) {
@@ -33,6 +41,8 @@ class LoginViewController: UIViewController, LoginView {
         }
         
         if validUser! {
+            
+           
             doLogin()
         }
         else {
@@ -45,12 +55,14 @@ class LoginViewController: UIViewController, LoginView {
     }
     
     func doLogin(){
+        UserDefaults.standard.set(emailField.text!, forKey: "email")
         let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ContainerVCID") as UIViewController
         present(vc, animated: true, completion: nil)
     }
     
     func displayAlertMessage(title: String, message: String) {
+        
         let alertController1 = UIAlertController (title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alertController1.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController1, animated: true, completion: nil)

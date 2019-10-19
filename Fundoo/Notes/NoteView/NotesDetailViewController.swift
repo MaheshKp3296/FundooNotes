@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+@available(iOS 13.0, *)
 class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate, NoteDetailView {
     @IBOutlet var noteTitleField: UITextField!
     @IBOutlet var noteDescriptionField: UITextView!
@@ -21,12 +22,6 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         super.viewDidLoad()
         noteDescriptionField.delegate = self
         notePresenter = NoteDetailPresenterImpl(view: self)
-        
-//        isBottomMenuOpen = false
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(toggleBottomMenu),
-//                                               name: NSNotification.Name("ToggleBottomMenu"),
-//                                               object: nil)
     }
     
     func fillDetailView(note : Note) {
@@ -52,10 +47,9 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         switch identifier {
         case "save" where note != nil:
-        //    note?.noteTitle = noteTitleField.text ??  ""
-        //    note?.noteDescription = noteDescriptionField.text ?? ""
-        //   let noteInfo = NoteInfo.init(noteTitle: noteTitleField.text ?? "" , noteDescription: noteDescriptionField.text ?? "")
-       notePresenter?.updateNote(noteInfo : note!)
+           note?.noteTitle = noteTitleField.text ??  ""
+           note?.noteDescription = noteDescriptionField.text ?? ""
+           notePresenter?.updateNote(noteInfo : note!)
            // NoteCoreDataHelper.saveNote()
             
         case "save" where note == nil:
@@ -63,13 +57,13 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
                 return
             }
             else {
-               // let note = NoteCoreDataHelper.newNote()
-             //   note.noteTitle = noteTitleField.text ?? ""
-            //   note.noteDescription = noteDescriptionField.text ?? ""
             let noteDetails = NoteInfo.init(noteTitle: noteTitleField.text ?? "" , noteDescription: noteDescriptionField.text ?? "" )
             notePresenter?.createNote(noteInfo: noteDetails)
             
             }
+            
+        case "delete" where note != nil:
+            notePresenter?.deleteNote(noteInfo: note!)
             
         default:
             print("unexpected segue identifier")

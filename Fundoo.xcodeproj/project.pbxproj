@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		CE057AD0233B4F9400636D0C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE057ACF233B4F9400636D0C /* LoginViewController.swift */; };
 		CE057AD2233B696500636D0C /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE057AD1233B696500636D0C /* UserViewController.swift */; };
-		CE0735D323548DE600AA3449 /* ColorCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0735D223548DE600AA3449 /* ColorCollectionViewController.swift */; };
-		CE0735D523548E1500AA3449 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0735D423548E1500AA3449 /* ColorCollectionViewCell.swift */; };
 		CE0735D823549D5F00AA3449 /* ColorContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0735D723549D5F00AA3449 /* ColorContainerViewController.swift */; };
 		CE08DD062351B456002F8861 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD052351B456002F8861 /* User.swift */; };
 		CE08DD082351D3BF002F8861 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD072351D3BF002F8861 /* LogInView.swift */; };
@@ -41,8 +39,6 @@
 /* Begin PBXFileReference section */
 		CE057ACF233B4F9400636D0C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE057AD1233B696500636D0C /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
-		CE0735D223548DE600AA3449 /* ColorCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewController.swift; sourceTree = "<group>"; };
-		CE0735D423548E1500AA3449 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE0735D723549D5F00AA3449 /* ColorContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorContainerViewController.swift; sourceTree = "<group>"; };
 		CE08DD052351B456002F8861 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CE08DD072351D3BF002F8861 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
@@ -150,8 +146,6 @@
 				CE0E6F36234DBF7600787F04 /* NoteCollectionViewCell.swift */,
 				CEFDC075234F5D1000F1AEFF /* SignIn.storyboard */,
 				CE08DD0F2351F4F8002F8861 /* NoteViewProtocol.swift */,
-				CE0735D223548DE600AA3449 /* ColorCollectionViewController.swift */,
-				CE0735D423548E1500AA3449 /* ColorCollectionViewCell.swift */,
 			);
 			path = NoteView;
 			sourceTree = "<group>";
@@ -298,11 +292,9 @@
 			files = (
 				CE08DD082351D3BF002F8861 /* LogInView.swift in Sources */,
 				CE122EFD2350853600752F84 /* LogInPresenter.swift in Sources */,
-				CE0735D323548DE600AA3449 /* ColorCollectionViewController.swift in Sources */,
 				CE0E6F3C234DFD7000787F04 /* NoteDetailView.swift in Sources */,
 				CE1E5AD9234756EA004EFE1F /* NotesDetailViewController.swift in Sources */,
 				CE0966642345E714009C6685 /* ContainerVC.swift in Sources */,
-				CE0735D523548E1500AA3449 /* ColorCollectionViewCell.swift in Sources */,
 				CE122EFB2350753000752F84 /* SignUpPresenter.swift in Sources */,
 				CE08DD0A2351E3A0002F8861 /* SignView.swift in Sources */,
 				CE0E6F39234DFD2400787F04 /* NoteDetailPresenter.swift in Sources */,
@@ -474,7 +466,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.BridgeLabz.Fundoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -491,7 +483,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.BridgeLabz.Fundoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

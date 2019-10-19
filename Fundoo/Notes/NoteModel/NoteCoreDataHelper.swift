@@ -11,13 +11,14 @@ import CoreData
 protocol NoteModel {
     func newNote() -> Note
     func saveNote()
-    func delete(note: NoteInfo)
+    func delete(noteInfo: NoteInfo)
     func retrieveNotes() -> [Note]
     func addNotes(note: NoteInfo)
     func updateNote(noteInfo : NoteInfo)
     func getListOfNotes() -> [NoteInfo]
 }
 
+@available(iOS 13.0, *)
 class NoteManager: NoteModel {
     
     private let persistentContainer : NSPersistentContainer = {
@@ -46,10 +47,16 @@ class NoteManager: NoteModel {
         }
     }
     
-    func delete(note: NoteInfo) {
-        // context.delete(note)
-        
-        saveNote()
+    func delete(noteInfo: NoteInfo) {
+        if let idUrl = URL.init(string: noteInfo.noteId!) {
+           
+            let coordinator = context.persistentStoreCoordinator!
+            let managedObjectID = coordinator.managedObjectID(forURIRepresentation: idUrl)
+            if let note = getById(id: managedObjectID!) {
+                context.delete(note)
+            }
+            saveNote()
+        }
     }
     
     func retrieveNotes() -> [Note] {
@@ -77,8 +84,8 @@ class NoteManager: NoteModel {
         print(noteInfo.noteId!)
         
         if let idUrl = URL.init(string: noteInfo.noteId!) {
-            let objectModel =  persistentContainer.managedObjectModel
-            let coordinator = NSPersistentStoreCoordinator(managedObjectModel: objectModel)
+           
+            let coordinator = context.persistentStoreCoordinator!
             let managedObjectID = coordinator.managedObjectID(forURIRepresentation: idUrl)
             if let note = getById(id: managedObjectID!) {
                 note.noteTitle = noteInfo.noteTitle

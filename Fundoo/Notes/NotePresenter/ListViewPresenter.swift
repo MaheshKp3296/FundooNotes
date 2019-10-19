@@ -9,9 +9,9 @@
 import Foundation
 protocol ListViewPresenter {
     func initUI()
-  //   func retrieveNotes()-> [Note]
 }
 
+@available(iOS 13.0, *)
 class ListViewPresenterImpl: ListViewPresenter {
     
     var model : NoteModel?

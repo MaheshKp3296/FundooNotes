@@ -11,8 +11,10 @@ import Foundation
 protocol NoteDetailPresenter {
     func updateNote(noteInfo : NoteInfo)
     func createNote(noteInfo : NoteInfo)
+    func deleteNote(noteInfo : NoteInfo)
 }
 
+@available(iOS 13.0, *)
 class NoteDetailPresenterImpl: NoteDetailPresenter  {
     
     var noteModel : NoteModel!
@@ -23,14 +25,19 @@ class NoteDetailPresenterImpl: NoteDetailPresenter  {
     }
     
     func createNote(noteInfo : NoteInfo){
-        //let newNote = model?.newNote()
         noteModel = NoteManager()
          noteModel.addNotes(note: noteInfo)
         
     }
+    
     func updateNote(noteInfo: NoteInfo){
         noteModel = NoteManager()
         noteModel.updateNote( noteInfo: noteInfo)
+    }
+    
+    func deleteNote(noteInfo : NoteInfo){
+        noteModel = NoteManager()
+        noteModel.delete(noteInfo: noteInfo)
     }
     
  

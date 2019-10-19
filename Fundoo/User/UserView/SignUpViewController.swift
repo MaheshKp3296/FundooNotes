@@ -9,11 +9,13 @@
 import UIKit
 import CoreData
 
+@available(iOS 13.0, *)
 class SignUpViewController: UIViewController, SignUpView {
    
     var failureMsg = ""
     var successMsg = ""
     
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var nameText: UITextField!
     
     @IBOutlet var emailText: UITextField!
@@ -28,7 +30,7 @@ class SignUpViewController: UIViewController, SignUpView {
         super.viewDidLoad()
         
         presenter = SignUpPresenterImpl(view: self)
-        
+    //    scrollView.contentSize=CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
     }
     
     func onSuccess(message: String) {
