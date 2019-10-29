@@ -8,54 +8,54 @@
 
 /* Begin PBXBuildFile section */
 		CE057AD0233B4F9400636D0C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE057ACF233B4F9400636D0C /* LoginViewController.swift */; };
-		CE057AD2233B696500636D0C /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE057AD1233B696500636D0C /* UserViewController.swift */; };
-		CE0735D823549D5F00AA3449 /* ColorContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0735D723549D5F00AA3449 /* ColorContainerViewController.swift */; };
 		CE08DD062351B456002F8861 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD052351B456002F8861 /* User.swift */; };
 		CE08DD082351D3BF002F8861 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD072351D3BF002F8861 /* LogInView.swift */; };
 		CE08DD0A2351E3A0002F8861 /* SignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD092351E3A0002F8861 /* SignView.swift */; };
-		CE08DD0C2351F0B2002F8861 /* ListViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD0B2351F0B2002F8861 /* ListViewPresenter.swift */; };
+		CE08DD0C2351F0B2002F8861 /* NoteListViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD0B2351F0B2002F8861 /* NoteListViewPresenter.swift */; };
 		CE08DD0E2351F229002F8861 /* NoteInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD0D2351F229002F8861 /* NoteInfo.swift */; };
 		CE08DD102351F4F8002F8861 /* NoteViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD0F2351F4F8002F8861 /* NoteViewProtocol.swift */; };
-		CE0966642345E714009C6685 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0966632345E714009C6685 /* ContainerVC.swift */; };
+		CE0966642345E714009C6685 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0966632345E714009C6685 /* DashboardVC.swift */; };
 		CE0966662345E7C6009C6685 /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0966652345E7C6009C6685 /* SideMenuController.swift */; };
 		CE0E6F35234DBCB800787F04 /* NoteListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E6F34234DBCB700787F04 /* NoteListCollectionViewController.swift */; };
 		CE0E6F37234DBF7600787F04 /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E6F36234DBF7600787F04 /* NoteCollectionViewCell.swift */; };
-		CE0E6F39234DFD2400787F04 /* NoteDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E6F38234DFD2400787F04 /* NoteDetailPresenter.swift */; };
 		CE0E6F3C234DFD7000787F04 /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E6F3B234DFD7000787F04 /* NoteDetailView.swift */; };
 		CE122EF52350655400752F84 /* UserCoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE122EF42350655400752F84 /* UserCoreDataHelper.swift */; };
 		CE122EFB2350753000752F84 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE122EFA2350753000752F84 /* SignUpPresenter.swift */; };
 		CE122EFD2350853600752F84 /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE122EFC2350853600752F84 /* LogInPresenter.swift */; };
 		CE1E5AD9234756EA004EFE1F /* NotesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E5AD8234756EA004EFE1F /* NotesDetailViewController.swift */; };
+		CE503EFE23680FEC009720D4 /* NoteDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE503EFD23680FEC009720D4 /* NoteDetailPresenter.swift */; };
+		CE503F00236819D0009720D4 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE503EFF236819D0009720D4 /* NotificationViewController.swift */; };
 		CE7AB34C233A0E4F00F0EDD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7AB34B233A0E4F00F0EDD7 /* AppDelegate.swift */; };
 		CE7AB351233A0E4F00F0EDD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7AB34F233A0E4F00F0EDD7 /* Main.storyboard */; };
 		CE7AB354233A0E4F00F0EDD7 /* Fundoo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE7AB352233A0E4F00F0EDD7 /* Fundoo.xcdatamodeld */; };
 		CE7AB356233A0E5800F0EDD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7AB355233A0E5800F0EDD7 /* Assets.xcassets */; };
 		CE7AB359233A0E5800F0EDD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7AB357233A0E5800F0EDD7 /* LaunchScreen.storyboard */; };
 		CE7AB361233A520300F0EDD7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7AB360233A520300F0EDD7 /* SignUpViewController.swift */; };
+		CE8BCA38235EE65B00CA5956 /* BottomMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8BCA37235EE65B00CA5956 /* BottomMenuTableViewController.swift */; };
+		CE8BCA40235F222E00CA5956 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8BCA3F235F222E00CA5956 /* ColorCollectionViewCell.swift */; };
 		CED4C6052348C55F0022C105 /* NoteCoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4C6042348C55F0022C105 /* NoteCoreDataHelper.swift */; };
-		CEFDC076234F5D1100F1AEFF /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEFDC075234F5D1000F1AEFF /* SignIn.storyboard */; };
+		CEFDC076234F5D1100F1AEFF /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEFDC075234F5D1000F1AEFF /* Dashboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE057ACF233B4F9400636D0C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		CE057AD1233B696500636D0C /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
-		CE0735D723549D5F00AA3449 /* ColorContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorContainerViewController.swift; sourceTree = "<group>"; };
 		CE08DD052351B456002F8861 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CE08DD072351D3BF002F8861 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		CE08DD092351E3A0002F8861 /* SignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignView.swift; sourceTree = "<group>"; };
-		CE08DD0B2351F0B2002F8861 /* ListViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewPresenter.swift; sourceTree = "<group>"; };
+		CE08DD0B2351F0B2002F8861 /* NoteListViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewPresenter.swift; sourceTree = "<group>"; };
 		CE08DD0D2351F229002F8861 /* NoteInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteInfo.swift; sourceTree = "<group>"; };
 		CE08DD0F2351F4F8002F8861 /* NoteViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewProtocol.swift; sourceTree = "<group>"; };
-		CE0966632345E714009C6685 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
+		CE0966632345E714009C6685 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		CE0966652345E7C6009C6685 /* SideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
 		CE0E6F34234DBCB700787F04 /* NoteListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListCollectionViewController.swift; sourceTree = "<group>"; };
 		CE0E6F36234DBF7600787F04 /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
-		CE0E6F38234DFD2400787F04 /* NoteDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteDetailPresenter.swift; path = Fundoo/Notes/NotePresenter/NoteDetailPresenter.swift; sourceTree = SOURCE_ROOT; };
 		CE0E6F3B234DFD7000787F04 /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
 		CE122EF42350655400752F84 /* UserCoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoreDataHelper.swift; sourceTree = "<group>"; };
 		CE122EFA2350753000752F84 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		CE122EFC2350853600752F84 /* LogInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
 		CE1E5AD8234756EA004EFE1F /* NotesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDetailViewController.swift; sourceTree = "<group>"; };
+		CE503EFD23680FEC009720D4 /* NoteDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailPresenter.swift; sourceTree = "<group>"; };
+		CE503EFF236819D0009720D4 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		CE7AB348233A0E4F00F0EDD7 /* Fundoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fundoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7AB34B233A0E4F00F0EDD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7AB350233A0E4F00F0EDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -64,8 +64,10 @@
 		CE7AB358233A0E5800F0EDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE7AB35A233A0E5800F0EDD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE7AB360233A520300F0EDD7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CE8BCA37235EE65B00CA5956 /* BottomMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuTableViewController.swift; sourceTree = "<group>"; };
+		CE8BCA3F235F222E00CA5956 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		CED4C6042348C55F0022C105 /* NoteCoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCoreDataHelper.swift; sourceTree = "<group>"; };
-		CEFDC075234F5D1000F1AEFF /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		CEFDC075234F5D1000F1AEFF /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +81,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE0735D623549CF900AA3449 /* ColorContainerVC */ = {
+		CE0735D623549CF900AA3449 /* BottomMenu */ = {
 			isa = PBXGroup;
 			children = (
-				CE0735D723549D5F00AA3449 /* ColorContainerViewController.swift */,
+				CE8BCA37235EE65B00CA5956 /* BottomMenuTableViewController.swift */,
+				CE8BCA3F235F222E00CA5956 /* ColorCollectionViewCell.swift */,
 			);
-			path = ColorContainerVC;
+			path = BottomMenu;
 			sourceTree = "<group>";
 		};
 		CE122EEF235064D200752F84 /* User */ = {
@@ -130,33 +133,11 @@
 		CE122EF6235067F400752F84 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				CE3CE9D6236802B4008116EF /* Note Detail */,
+				CE3CE9D423680281008116EF /* Note List */,
 				CE122EF92350682200752F84 /* NoteModel */,
-				CE122EF82350681700752F84 /* NotePresenter */,
-				CE122EF72350680900752F84 /* NoteView */,
 			);
 			path = Notes;
-			sourceTree = "<group>";
-		};
-		CE122EF72350680900752F84 /* NoteView */ = {
-			isa = PBXGroup;
-			children = (
-				CE0E6F3B234DFD7000787F04 /* NoteDetailView.swift */,
-				CE0E6F34234DBCB700787F04 /* NoteListCollectionViewController.swift */,
-				CE1E5AD8234756EA004EFE1F /* NotesDetailViewController.swift */,
-				CE0E6F36234DBF7600787F04 /* NoteCollectionViewCell.swift */,
-				CEFDC075234F5D1000F1AEFF /* SignIn.storyboard */,
-				CE08DD0F2351F4F8002F8861 /* NoteViewProtocol.swift */,
-			);
-			path = NoteView;
-			sourceTree = "<group>";
-		};
-		CE122EF82350681700752F84 /* NotePresenter */ = {
-			isa = PBXGroup;
-			children = (
-				CE0E6F38234DFD2400787F04 /* NoteDetailPresenter.swift */,
-				CE08DD0B2351F0B2002F8861 /* ListViewPresenter.swift */,
-			);
-			path = NotePresenter;
 			sourceTree = "<group>";
 		};
 		CE122EF92350682200752F84 /* NoteModel */ = {
@@ -166,6 +147,63 @@
 				CE08DD0D2351F229002F8861 /* NoteInfo.swift */,
 			);
 			path = NoteModel;
+			sourceTree = "<group>";
+		};
+		CE3CE9D423680281008116EF /* Note List */ = {
+			isa = PBXGroup;
+			children = (
+				CE3CE9DA23680397008116EF /* Note List Views */,
+				CE3CE9D823680310008116EF /* Note List Presenter */,
+			);
+			path = "Note List";
+			sourceTree = "<group>";
+		};
+		CE3CE9D6236802B4008116EF /* Note Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CE3CE9D923680354008116EF /* Note Detail Views */,
+				CE3CE9D7236802DC008116EF /* Note Detail Presenter */,
+			);
+			path = "Note Detail";
+			sourceTree = "<group>";
+		};
+		CE3CE9D7236802DC008116EF /* Note Detail Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CE503EFD23680FEC009720D4 /* NoteDetailPresenter.swift */,
+			);
+			path = "Note Detail Presenter";
+			sourceTree = "<group>";
+		};
+		CE3CE9D823680310008116EF /* Note List Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CE08DD0B2351F0B2002F8861 /* NoteListViewPresenter.swift */,
+			);
+			path = "Note List Presenter";
+			sourceTree = "<group>";
+		};
+		CE3CE9D923680354008116EF /* Note Detail Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE0E6F3B234DFD7000787F04 /* NoteDetailView.swift */,
+				CE1E5AD8234756EA004EFE1F /* NotesDetailViewController.swift */,
+				CE503EFF236819D0009720D4 /* NotificationViewController.swift */,
+				CE0735D623549CF900AA3449 /* BottomMenu */,
+			);
+			path = "Note Detail Views";
+			sourceTree = "<group>";
+		};
+		CE3CE9DA23680397008116EF /* Note List Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE0E6F34234DBCB700787F04 /* NoteListCollectionViewController.swift */,
+				CE0E6F36234DBF7600787F04 /* NoteCollectionViewCell.swift */,
+				CEFDC075234F5D1000F1AEFF /* Dashboard.storyboard */,
+				CE08DD0F2351F4F8002F8861 /* NoteViewProtocol.swift */,
+				CE9ABC67233DCA78005D0500 /* SideMenu */,
+			);
+			path = "Note List Views";
 			sourceTree = "<group>";
 		};
 		CE7AB33F233A0E4E00F0EDD7 = {
@@ -187,11 +225,9 @@
 		CE7AB34A233A0E4F00F0EDD7 /* Fundoo */ = {
 			isa = PBXGroup;
 			children = (
-				CE0735D623549CF900AA3449 /* ColorContainerVC */,
-				CE122EF6235067F400752F84 /* Notes */,
 				CE122EEF235064D200752F84 /* User */,
+				CE122EF6235067F400752F84 /* Notes */,
 				CE9ABC68233DD06E005D0500 /* Supporting Files */,
-				CE9ABC67233DCA78005D0500 /* SideMenu */,
 				CE7AB355233A0E5800F0EDD7 /* Assets.xcassets */,
 				CE7AB35A233A0E5800F0EDD7 /* Info.plist */,
 			);
@@ -202,8 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				CE0966652345E7C6009C6685 /* SideMenuController.swift */,
-				CE0966632345E714009C6685 /* ContainerVC.swift */,
-				CE057AD1233B696500636D0C /* UserViewController.swift */,
+				CE0966632345E714009C6685 /* DashboardVC.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -276,7 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEFDC076234F5D1100F1AEFF /* SignIn.storyboard in Resources */,
+				CEFDC076234F5D1100F1AEFF /* Dashboard.storyboard in Resources */,
 				CE7AB359233A0E5800F0EDD7 /* LaunchScreen.storyboard in Resources */,
 				CE7AB356233A0E5800F0EDD7 /* Assets.xcassets in Resources */,
 				CE7AB351233A0E4F00F0EDD7 /* Main.storyboard in Resources */,
@@ -292,25 +327,26 @@
 			files = (
 				CE08DD082351D3BF002F8861 /* LogInView.swift in Sources */,
 				CE122EFD2350853600752F84 /* LogInPresenter.swift in Sources */,
+				CE503F00236819D0009720D4 /* NotificationViewController.swift in Sources */,
 				CE0E6F3C234DFD7000787F04 /* NoteDetailView.swift in Sources */,
 				CE1E5AD9234756EA004EFE1F /* NotesDetailViewController.swift in Sources */,
-				CE0966642345E714009C6685 /* ContainerVC.swift in Sources */,
+				CE0966642345E714009C6685 /* DashboardVC.swift in Sources */,
 				CE122EFB2350753000752F84 /* SignUpPresenter.swift in Sources */,
+				CE8BCA38235EE65B00CA5956 /* BottomMenuTableViewController.swift in Sources */,
 				CE08DD0A2351E3A0002F8861 /* SignView.swift in Sources */,
-				CE0E6F39234DFD2400787F04 /* NoteDetailPresenter.swift in Sources */,
-				CE057AD2233B696500636D0C /* UserViewController.swift in Sources */,
 				CE08DD062351B456002F8861 /* User.swift in Sources */,
 				CE7AB34C233A0E4F00F0EDD7 /* AppDelegate.swift in Sources */,
 				CE08DD0E2351F229002F8861 /* NoteInfo.swift in Sources */,
 				CE08DD102351F4F8002F8861 /* NoteViewProtocol.swift in Sources */,
-				CE0735D823549D5F00AA3449 /* ColorContainerViewController.swift in Sources */,
+				CE8BCA40235F222E00CA5956 /* ColorCollectionViewCell.swift in Sources */,
 				CE0966662345E7C6009C6685 /* SideMenuController.swift in Sources */,
 				CED4C6052348C55F0022C105 /* NoteCoreDataHelper.swift in Sources */,
 				CE0E6F35234DBCB800787F04 /* NoteListCollectionViewController.swift in Sources */,
 				CE7AB361233A520300F0EDD7 /* SignUpViewController.swift in Sources */,
 				CE0E6F37234DBF7600787F04 /* NoteCollectionViewCell.swift in Sources */,
 				CE122EF52350655400752F84 /* UserCoreDataHelper.swift in Sources */,
-				CE08DD0C2351F0B2002F8861 /* ListViewPresenter.swift in Sources */,
+				CE08DD0C2351F0B2002F8861 /* NoteListViewPresenter.swift in Sources */,
+				CE503EFE23680FEC009720D4 /* NoteDetailPresenter.swift in Sources */,
 				CE057AD0233B4F9400636D0C /* LoginViewController.swift in Sources */,
 				CE7AB354233A0E4F00F0EDD7 /* Fundoo.xcdatamodeld in Sources */,
 			);

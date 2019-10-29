@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-@available(iOS 13.0, *)
+//@available(iOS 13.0, *)
 class SignUpViewController: UIViewController, SignUpView {
    
     var failureMsg = ""

@@ -18,7 +18,7 @@ protocol NoteModel {
     func getListOfNotes() -> [NoteInfo]
 }
 
-@available(iOS 13.0, *)
+
 class NoteManager: NoteModel {
     
     private let persistentContainer : NSPersistentContainer = {
@@ -77,6 +77,13 @@ class NoteManager: NoteModel {
         let newNote = self.newNote()
         newNote.setValue(note.noteTitle, forKey: "noteTitle")
         newNote.setValue(note.noteDescription, forKey: "noteDescription")
+        newNote.setValue(note.notePosition, forKey: "notePosition")
+        newNote.setValue(note.noteColor, forKey: "noteColor")
+        newNote.setValue(note.noteArchive, forKey: "noteArchive")
+        newNote.setValue(note.noteImp, forKey: "noteImp")
+        newNote.setValue(note.noteReminder, forKey: "noteReminder")
+       // print(note.notePosition)
+       // print(newNote)
         saveNote()
     }
     
@@ -88,8 +95,14 @@ class NoteManager: NoteModel {
             let coordinator = context.persistentStoreCoordinator!
             let managedObjectID = coordinator.managedObjectID(forURIRepresentation: idUrl)
             if let note = getById(id: managedObjectID!) {
+                note.notePosition = Int64(noteInfo.notePosition)
                 note.noteTitle = noteInfo.noteTitle
                 note.noteDescription = noteInfo.noteDescription
+                note.noteColor = noteInfo.noteColor
+                note.noteArchive = noteInfo.noteArchive
+                note.noteImp = noteInfo.noteImp
+                note.noteReminder = noteInfo.noteReminder
+                
             }
             saveNote()
         }
@@ -98,22 +111,27 @@ class NoteManager: NoteModel {
     func getListOfNotes() -> [NoteInfo] {
         var listOfNotes = [NoteInfo]()
         let results = retrieveNotes()
-        
+
         for result in results {
             let noteTitle = result.noteTitle
             let noteDescription = result.noteDescription
-            var noteDetails = NoteInfo.init(noteTitle: noteTitle!, noteDescription: noteDescription!)
+            var noteDetails = NoteInfo.init(notePosition: Int(result.notePosition), noteTitle: noteTitle!, noteDescription: noteDescription!, noteColor: result.noteColor!, noteArchive: result.noteArchive, noteImp: result.noteImp, noteReminder: result.noteReminder)
             noteDetails.noteId = result.objectID.uriRepresentation().absoluteString
             listOfNotes.append(noteDetails)
+            
         }
-        print(listOfNotes)
-        
+        print("NoteCoreDatalistOfNotes : \(listOfNotes)")
+       
         return listOfNotes
     }
     
     func getById(id: NSManagedObjectID) -> Note? {
         return context.object(with: id) as? Note
     }
+    
+    
+    
+
     
 }
 

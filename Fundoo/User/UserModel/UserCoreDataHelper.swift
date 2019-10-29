@@ -14,10 +14,10 @@ protocol UserModel {
     func saveUser()
     func delete(user: User)
     func retrieveUsers() -> [User]
-    func addUser(user : UserInfo )
+    func addUser(user : UserInfo)
 }
 
-@available(iOS 13.0, *)
+//@available(iOS 13.0, *)
 class UserManager : UserModel {
     let context: NSManagedObjectContext = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {

@@ -8,10 +8,12 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
-@available(iOS 13.0, *)
+//@available(iOS 13.0, *)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    let notificationCenter = UNUserNotificationCenter.current()
 
     var window: UIWindow?
 
@@ -19,6 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         check()
         // Override point for customization after application launch.
+        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+        notificationCenter.requestAuthorization(options: options) {
+            (didAllow, error) in
+            if !didAllow {
+                print("User has declined notifications")
+            }
+        }
         return true
     }
 
@@ -93,8 +102,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func check() {
     if UserDefaults.standard.value(forKey: "email") != nil {
-        let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ContainerVCID") as UIViewController
+        let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as UIViewController
 //        let navVc = UINavigationController(rootViewController: vc)
         let share = UIApplication.shared.delegate as? AppDelegate
         share?.window?.rootViewController = vc

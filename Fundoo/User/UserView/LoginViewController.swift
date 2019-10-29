@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-@available(iOS 13.0, *)
+
 class LoginViewController: UIViewController, LoginView {
     
     @IBOutlet var noteImage: UIImageView!
@@ -56,8 +56,10 @@ class LoginViewController: UIViewController, LoginView {
     
     func doLogin(){
         UserDefaults.standard.set(emailField.text!, forKey: "email")
-        let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ContainerVCID") as UIViewController
+        let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
+       
+        let vc =  storyboard.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
+      //  let vc =    storyboard.instantiateViewController(identifier: "ContainerVCID") as UIViewController
         present(vc, animated: true, completion: nil)
     }
     
