@@ -29,7 +29,6 @@ class NoteDetailPresenterImpl: NoteDetailPresenter  {
     func createNote(noteInfo : NoteInfo){
         noteModel = NoteManager()
          noteModel.addNotes(note: noteInfo)
-        
     }
     
     func updateNote(noteInfo: NoteInfo){

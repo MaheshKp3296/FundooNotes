@@ -10,7 +10,7 @@ import UIKit
 
 class NoteCollectionViewCell: UICollectionViewCell {
     
-//    override var reuseIdentifier: String? = "noteCell"
+
     
     @IBOutlet var titleLabel: UILabel!
     
@@ -18,12 +18,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel?
     
     func configureCell(note : NoteInfo) {
-        self.backgroundColor = UIColor(hex: note.noteColor)
+        self.backgroundColor = Helper.hexStringToUIColor(note.noteColor)
         self.titleLabel.text = note.noteTitle
-//       let formatter = DateFormatter()
-//       formatter.dateFormat = "yyyy-MM-dd hh:mm:ss +zzz"
-//
-//        self.dateLabel?.text = formatter.string(from: note.noteReminder)
         self.decriptionLabel.text = note.noteDescription
     }
     

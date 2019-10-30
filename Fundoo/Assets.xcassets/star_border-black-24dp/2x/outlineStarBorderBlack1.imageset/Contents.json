@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "outline_star_border_black_24dp.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "outline_star_border_black_24dp.png",
       "scale" : "2x"
     },
     {

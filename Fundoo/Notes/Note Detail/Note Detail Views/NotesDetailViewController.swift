@@ -10,11 +10,11 @@ import CoreData
 import UserNotifications
 
 class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate, NoteDetailView {
+    @IBOutlet weak var bottomContainerView: UIView!
     @IBOutlet var bottomMenuConstraint: NSLayoutConstraint!
     @IBOutlet var noteTitleField: UITextField!
     @IBOutlet var noteDescriptionField: UITextView!
     @IBOutlet var noteImpButton: UIBarButtonItem!
-    
     @IBOutlet var archiveUnarchiveBtn: UIBarButtonItem!
     var noteColor : String?
     var value : Int!
@@ -28,30 +28,25 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
                 image = UIImage(named: "impNote.png")
             }
             else {
-               image = UIImage(named: "outline_star_border_black_24dp.png")
+                image = UIImage(named: "outlineStarBorderBlack1.png")
             }
             noteImpButton.image = image
         }
     }
-    var noteArchive : Bool!{
-        didSet{
-            archiveUnarchiveBtn.title = ""
-            archiveUnarchiveBtn.image = nil
-            
+    var noteArchive : Bool = false {
+        didSet {
+            let image : UIImage!
             if noteArchive {
-                archiveUnarchiveBtn!.setBackgroundImage(UIImage(named: "unarchive.png"), for: .normal, barMetrics: .default)
+                image = UIImage(named: "unarchive.png")
             }
             else {
-                archiveUnarchiveBtn!.setBackgroundImage(UIImage(named: "archive.png"), for: .normal, barMetrics: .default)
-                
+                image = UIImage(named: "archive.png")
             }
+            archiveUnarchiveBtn.image = image
         }
     }
-    var notePresenter : NoteDetailPresenter?
     
-    func fillDetailView(note : NoteInfo) {
-        self.note = note
-    }
+    var notePresenter : NoteDetailPresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,15 +57,19 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
                                                selector: #selector(changeColor),
                                                name: NSNotification.Name("ChangeColor"),
                                                object: nil)
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        applyShadowOnView(bottomContainerView)
         initMode()
     }
     
-    private func initMode(){
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    func fillDetailView(note : NoteInfo) {
+        self.note = note
+    }
+    
+    private func initMode() {
         if let note = note {
             initEditMode(note: note)
         }
@@ -79,97 +78,63 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         }
     }
     
-    private func initEditMode(note : NoteInfo){
+    private func initEditMode(note : NoteInfo) {
         noteTitleField.text = note.noteTitle
         noteDescriptionField.text = note.noteDescription
         noteColor = note.noteColor
         noteArchive = note.noteArchive
         noteImp = note.noteImp
-       // noteDate = note.noteReminder
         setColor(note.noteColor)
-        
-        
     }
-    private func initCreateMode(){
+    
+    private func initCreateMode() {
         noteTitleField.text = ""
         noteDescriptionField.text = textViewPlaceHolder
         noteDescriptionField.textColor = .lightGray
     }
     
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch value {
-        case 0:
-            noteColor = "#666666"
-        case 1:
-            noteColor = "#FFFFFF"
-        case 2:
-            noteColor = "#99CC66"
-        case 3:
-            noteColor = "#FFFF00"
-        case 4:
-            noteColor = "#6699FF"
-        case 5:
-            noteColor = "#FF66CC"
-            
-        default:
-            print("error")
-        }
-        
         
         guard let identifier = segue.identifier else { return }
         
         switch identifier {
-        case "save" where note != nil:
+        case "saveNoteSegue" where note != nil:
             note?.noteTitle = noteTitleField.text ??  ""
             note?.noteDescription = noteDescriptionField.text ?? ""
             note?.noteColor = noteColor ?? ""
             note?.noteReminder = noteDate
-          //  print("note is archived \(String(describing: note?.noteArchive))")
             notePresenter?.updateNote(noteInfo : note!)
-           if noteDate != nil{
-             scheduleNotification()
+            if noteDate != nil{
+                scheduleNotification()
             }
-
-
             
-        case "save" where note == nil:
+        case "saveNoteSegue" where note == nil:
             if noteTitleField.text == "" || noteDescriptionField.text == "" {
                 return
             }
             else {
-                
                 print("Color value = \(value ?? 0)")
-                let noteDetails = NoteInfo.init(notePosition: (notePresenter?.getMaxPositon())! + 1, noteTitle: noteTitleField.text ?? "" , noteDescription: noteDescriptionField.text ?? "", noteColor: noteColor ?? "#FFFFFF", noteArchive: noteArchive ?? false, noteImp: noteImp, noteReminder: noteDate )
+                let noteDetails = NoteInfo.init(notePosition: (notePresenter?.getMaxPositon())! + 1, noteTitle: noteTitleField.text ?? "" , noteDescription: noteDescriptionField.text ?? "", noteColor: noteColor ?? "#FFFFFF", noteArchive: noteArchive , noteImp: noteImp, noteReminder: noteDate )
                 notePresenter?.createNote(noteInfo: noteDetails)
-               if noteDate != nil{
-                  scheduleNotification()
-            }
+                if noteDate != nil {
+                    scheduleNotification()
+                }
                 
             }
             
-        case "delete" where note != nil:
+        case "deleteNoteSegue" where note != nil:
             notePresenter?.deleteNote(noteInfo: note!)
             
-        case "archive" where note != nil:
-            noteArchive = note?.noteArchive
-            if !noteArchive{
-                note?.noteArchive = true
-                notePresenter?.archiveNote(noteinfo: note!)
-            }
-            else {
-                note?.noteArchive = false
-                notePresenter?.archiveNote(noteinfo: note!)
-            }
-//        
-        case "NoteToReminderSegue" :
+        case "archiveNoteSegue" where note != nil:
+            noteArchive = !noteArchive
+            note?.noteArchive = noteArchive
+            notePresenter?.updateNote(noteInfo: note!)
+    
+        case "setReminderSegue" :
             let reminderVC = segue.destination as? NotificationViewController
             reminderVC!.completionBlock = {[weak self] date in
-                print(date)
-                self?.noteDate = date
+            self?.noteDate = date
             }
-            
             
         default:
             print("unexpected segue identifier")
@@ -206,15 +171,11 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
-        
     }
     
-    
     func scheduleNotification() {
-        
         let notificationCenter = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
-        
         content.title = noteTitleField.text!
         content.body = noteDescriptionField.text!
         content.sound = UNNotificationSound.default
@@ -229,22 +190,39 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         }
     }
     
-    
     @objc func changeColor(_ notification : NSNotification) {
         value = notification.userInfo?["value"] as? Int
-        switch value!{
-        case 0 : setColor("#666666")
-            
-        case 1 : setColor("#FFFFFF")
-            
-        case 2 : setColor("#99CC66")
-            
-        case 3 : setColor("#FFFF00")
-            
-        case 4 : setColor("#6699FF")
-            
-        case 5 : setColor("#FF66CC")
-            
+        switch value {
+        case 0:
+            noteColor = "#FFFFFF"
+            setColor(noteColor!)
+        case 1:
+            noteColor = "#EE8B82"
+            setColor(noteColor!)
+        case 2:
+            noteColor = "#F7BC33"
+            setColor(noteColor!)
+        case 3:
+            noteColor = "#FFF476"
+            setColor(noteColor!)
+        case 4:
+            noteColor = "#CAF790"
+            setColor(noteColor!)
+        case 5:
+            noteColor = "#A5FAEB"
+            setColor(noteColor!)
+        case 6:
+            noteColor = "#CCF0F8"
+            setColor(noteColor!)
+        case 7:
+            noteColor = "#AFCCFA"
+            setColor(noteColor!)
+        case 8:
+            noteColor = "#D7AFFB"
+            setColor(noteColor!)
+        case 9:
+            noteColor = "#F5CEE8"
+            setColor(noteColor!)
         default:
             print("error")
         }
@@ -252,113 +230,36 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
     }
     
     func setColor(_ hexColorString : String){
-        let viewColor = UIColor(hex: hexColorString)
+        let viewColor : UIColor = Helper.hexStringToUIColor(hexColorString)
         self.view.backgroundColor = viewColor
         noteTitleField.backgroundColor = viewColor
         noteDescriptionField.backgroundColor = viewColor
-        
     }
     
     @IBAction func impNotes(_ sender: Any) {
-        // MARK: create note problem
-//        noteImp = note?.noteImp ??
-        
-       
-//        if !noteImp {
-//            note?.noteImp = true
-//            notePresenter?.updateNote(noteInfo: note!)
-//        }
-//        else{
-//            note?.noteImp = false
-//            notePresenter?.updateNote(noteInfo: note!)
-//        }
         noteImp = !noteImp
-        
         if note != nil {
-        note?.noteImp = noteImp
-        notePresenter?.updateNote(noteInfo: note!)
+            note?.noteImp = noteImp
+            notePresenter?.updateNote(noteInfo: note!)
         }
         
     }
     
-    
-    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-extension UIColor {
-    public convenience init?(hex: String) {
-        let r, g, b, a: CGFloat
-        
-        if hex.hasPrefix("#") {
-            let start = hex.index(hex.startIndex, offsetBy: 1)
-            let hexColor = String(hex[start...])
-            
-            if hexColor.count == 6 {
-                let scanner = Scanner(string: hexColor)
-                var hexNumber: UInt64 = 0
-                
-                if scanner.scanHexInt64(&hexNumber) {
-                    r = CGFloat((hexNumber & 0xFF0000) >> 16) / 255.0
-                    g = CGFloat((hexNumber & 0x00FF00) >> 8)  / 255.0
-                    b = CGFloat(hexNumber & 0x0000FF) / 255.0
-                    a = 1.0
-                    
-                    self.init(red: r, green: g, blue: b, alpha: a)
-                    return
-                }
-            }
+    func applyShadowOnView(_ view: UIView) {
+            view.layer.shadowColor = UIColor.black.cgColor
+            view.layer.shadowOffset = CGSize(width: 1.5, height: 3)
+            view.layer.masksToBounds = false
+            view.layer.shadowOpacity = 0.6
+            view.layer.shadowRadius = 3
+            view.layer.rasterizationScale = UIScreen.main.scale
+            view.layer.shouldRasterize = true
         }
-        
-        return nil
-    }
-    
-    
-    
-    
-    
-    
 }
 
 
+/**
+ viewcontroller -> taking values from view
 
-
-
-
-
-
-
-
-
-//666666
-//FFFFFF
-//99CC66
-//FFFF00
-//6699FF
-//FF66CC
-//red   = CGFloat((hexValue & 0xFF0000) >> 16) / 255.0
-//green = CGFloat((hexValue & 0x00FF00) >> 8)  / 255.0
-//blue  = CGFloat(hexValue & 0x0000FF) / 255.0
+ presenter -> note <- 
+ 
+ */

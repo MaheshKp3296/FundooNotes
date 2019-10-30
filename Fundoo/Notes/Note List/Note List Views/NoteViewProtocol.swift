@@ -10,6 +10,4 @@ import Foundation
 
 protocol NoteView {
     func getListOfNotes(listOfNotes: [NoteInfo])
-    func getListOfArchivedNotes(listOfNotes: [NoteInfo])
-   
 }

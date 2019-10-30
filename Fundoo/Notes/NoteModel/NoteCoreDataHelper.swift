@@ -82,8 +82,6 @@ class NoteManager: NoteModel {
         newNote.setValue(note.noteArchive, forKey: "noteArchive")
         newNote.setValue(note.noteImp, forKey: "noteImp")
         newNote.setValue(note.noteReminder, forKey: "noteReminder")
-       // print(note.notePosition)
-       // print(newNote)
         saveNote()
     }
     

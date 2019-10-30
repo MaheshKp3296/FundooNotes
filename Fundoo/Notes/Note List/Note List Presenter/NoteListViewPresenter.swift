@@ -85,7 +85,7 @@ class NoteListViewPresenterImpl: NoteListViewPresenter {
         var noteList = [NoteInfo]()
         let noteLists = noteListModel.getListOfNotes()
         for list in noteLists{
-            if list.noteArchive == false{
+            if list.noteArchive == false && list.noteImp == false{
                 noteList.append(list)
             }
         }
@@ -103,5 +103,4 @@ class NoteListViewPresenterImpl: NoteListViewPresenter {
         }
         return listOfNotes
     }
-    
 }

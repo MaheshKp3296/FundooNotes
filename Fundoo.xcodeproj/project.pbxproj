@@ -23,6 +23,7 @@
 		CE122EFB2350753000752F84 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE122EFA2350753000752F84 /* SignUpPresenter.swift */; };
 		CE122EFD2350853600752F84 /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE122EFC2350853600752F84 /* LogInPresenter.swift */; };
 		CE1E5AD9234756EA004EFE1F /* NotesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E5AD8234756EA004EFE1F /* NotesDetailViewController.swift */; };
+		CE40F1182369C0300081E805 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F1172369C0300081E805 /* Helper.swift */; };
 		CE503EFE23680FEC009720D4 /* NoteDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE503EFD23680FEC009720D4 /* NoteDetailPresenter.swift */; };
 		CE503F00236819D0009720D4 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE503EFF236819D0009720D4 /* NotificationViewController.swift */; };
 		CE7AB34C233A0E4F00F0EDD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7AB34B233A0E4F00F0EDD7 /* AppDelegate.swift */; };
@@ -54,6 +55,7 @@
 		CE122EFA2350753000752F84 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		CE122EFC2350853600752F84 /* LogInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
 		CE1E5AD8234756EA004EFE1F /* NotesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDetailViewController.swift; sourceTree = "<group>"; };
+		CE40F1172369C0300081E805 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		CE503EFD23680FEC009720D4 /* NoteDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailPresenter.swift; sourceTree = "<group>"; };
 		CE503EFF236819D0009720D4 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		CE7AB348233A0E4F00F0EDD7 /* Fundoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fundoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +191,7 @@
 				CE0E6F3B234DFD7000787F04 /* NoteDetailView.swift */,
 				CE1E5AD8234756EA004EFE1F /* NotesDetailViewController.swift */,
 				CE503EFF236819D0009720D4 /* NotificationViewController.swift */,
+				CE40F1172369C0300081E805 /* Helper.swift */,
 				CE0735D623549CF900AA3449 /* BottomMenu */,
 			);
 			path = "Note Detail Views";
@@ -347,6 +350,7 @@
 				CE122EF52350655400752F84 /* UserCoreDataHelper.swift in Sources */,
 				CE08DD0C2351F0B2002F8861 /* NoteListViewPresenter.swift in Sources */,
 				CE503EFE23680FEC009720D4 /* NoteDetailPresenter.swift in Sources */,
+				CE40F1182369C0300081E805 /* Helper.swift in Sources */,
 				CE057AD0233B4F9400636D0C /* LoginViewController.swift in Sources */,
 				CE7AB354233A0E4F00F0EDD7 /* Fundoo.xcdatamodeld in Sources */,
 			);

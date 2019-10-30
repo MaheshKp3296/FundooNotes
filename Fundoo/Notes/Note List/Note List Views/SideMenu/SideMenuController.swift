@@ -12,34 +12,40 @@ class SideMenuController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == SideMenuIndex.NotesPageIndex.rawValue {
+        switch indexPath.row {
+        case SideMenuIndex.NotesPageIndex.rawValue :
             NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
-             NotificationCenter.default.post(name: NSNotification.Name("SideMenuView"), object: nil, userInfo: ["value": indexPath.row])
-        }
-        
-        if indexPath.row == SideMenuIndex.ArchivePageIndex.rawValue {
+            NotificationCenter.default.post(name: NSNotification.Name("SideMenuView"), object: nil, userInfo: ["value": SideMenuIndex.NotesPageIndex.rawValue])
+            
+        case SideMenuIndex.ReminderNotesIndex.rawValue :
             NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
-            NotificationCenter.default.post(name: NSNotification.Name("SideMenuView"), object: nil, userInfo: ["value": indexPath.row])
-        }
-        
-        if indexPath.row == SideMenuIndex.ReminderNotesIndex.rawValue {
+            NotificationCenter.default.post(name: NSNotification.Name("SideMenuView"), object: nil, userInfo: ["value": SideMenuIndex.ReminderNotesIndex.rawValue])
+            
+        case SideMenuIndex.ImpNotesIndex.rawValue :
             NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
-            NotificationCenter.default.post(name: NSNotification.Name("SideMenuView"), object: nil, userInfo: ["value": indexPath.row])
-        }
-        
-        if indexPath.row == SideMenuIndex.LogOutPageIndex.rawValue {
+            NotificationCenter.default.post(name: NSNotification.Name("SideMenuView"), object: nil, userInfo: ["value": SideMenuIndex.ImpNotesIndex.rawValue])
+            
+        case SideMenuIndex.ArchivePageIndex.rawValue :
+            NotificationCenter.default.post(name: NSNotification.Name("ToggleSideMenu"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name("SideMenuView"), object: nil, userInfo: ["value": SideMenuIndex.ArchivePageIndex.rawValue])
+            
+        case SideMenuIndex.LogOutPageIndex.rawValue :
             UserDefaults.standard.removeObject(forKey: "email")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "LoginVcId") as UIViewController
-            present(vc, animated: true, completion: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "LoginVcId") as UIViewController
+            present(viewController, animated: true, completion: nil)
+            
+        default:
+            print("error")
         }
+        
     }
     
-}
-
-enum SideMenuIndex : Int {
-    case NotesPageIndex = 1
-    case ReminderNotesIndex = 2
-    case ArchivePageIndex = 4
-    case LogOutPageIndex = 6
+    enum SideMenuIndex : Int {
+        case NotesPageIndex = 1
+        case ReminderNotesIndex = 2
+        case ImpNotesIndex = 3
+        case ArchivePageIndex = 4
+        case LogOutPageIndex = 6
+    }
 }
