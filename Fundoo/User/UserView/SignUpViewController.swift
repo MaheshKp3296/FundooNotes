@@ -8,10 +8,12 @@
 
 import UIKit
 import CoreData
+import FirebaseAuth
+import Firebase
 
 //@available(iOS 13.0, *)
 class SignUpViewController: UIViewController, SignUpView {
-   
+    
     var failureMsg = ""
     var successMsg = ""
     
@@ -30,7 +32,7 @@ class SignUpViewController: UIViewController, SignUpView {
         super.viewDidLoad()
         
         presenter = SignUpPresenterImpl(view: self)
-    //    scrollView.contentSize=CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
+        
     }
     
     func onSuccess(message: String) {
@@ -46,27 +48,21 @@ class SignUpViewController: UIViewController, SignUpView {
             displayAlertMessage(title: "Alert", message: "All fields are required")
             return
         }
-       
         if !presenter!.isValidUser(nameText.text!) {
             print("name check")
             displayAlertMessage(title: "Alert", message: failureMsg)
             return
         }
-        if !presenter!.isPasswordValid(passwordText.text!) {
-            print("pswd check")
-            displayAlertMessage(title: "Alert", message: failureMsg)
-        }
+        
         if arePasswordsMatching() {
             displayAlertMessage(title: "Alert", message: "Passwords do not match")
             return
         }
-        if !presenter!.isValidEmail(emailText.text!) {
-            
-            print("mail check")
-            displayAlertMessage(title: "Alert", message: failureMsg)
-        }
         
+        
+        apiSignUp()
         doAddUser()
+        
     }
     
     private func areFieldsEmpty() -> Bool {
@@ -84,15 +80,100 @@ class SignUpViewController: UIViewController, SignUpView {
     }
     
     private func doAddUser() {
-        let user = UserInfo(name: nameText.text!,email: emailText.text!,password: passwordText.text!)
-        presenter?.registerUser(user: user)
-        let myAlert = UIAlertController (title: "Congrats!", message: successMsg, preferredStyle: UIAlertController.Style.alert)
+        //  let user = UserInfo(name: nameText.text!,email: emailText.text!,password: passwordText.text!)
+        //  presenter?.registerUser(user: user)
+        let myAlert = UIAlertController (title: "Registration Successful", message: "Please Login", preferredStyle: UIAlertController.Style.alert)
         let okAction  = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { action in
             self.dismiss(animated: true, completion: nil) }
         myAlert.addAction(okAction)
         self.present(myAlert, animated: true, completion: nil)
     }
+    
+    func apiSignUp(){
+        
+        let userDetails = UserDetails.init(username: nameText.text!, email: emailText.text!, password: passwordText.text!)
+        guard let url  = URL(string: "http://fundoonotes.incubation.bridgelabz.com/api/user/userSignUp") else { return }
+        var request = URLRequest(url : url)
+        request.httpMethod = "POST"
+        
+        do {
+            let httpBody = try JSONEncoder().encode(userDetails)
+             request.httpBody =  httpBody
+        }
+        catch {}
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            print(response!)
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                print(json)
+            } catch {
+                print("error")
+            }
+        })
+
+        task.resume()
+        
+    }
+    
+    
+    
+    
 }
 
 
+//typealias error = Error
+//signUp(emailText.text!, passwordText.text!, completion: { [weak self] error in
+//    if error != nil {
+//        self!.displayAlertMessage(title: "Alert", message: error!.localizedDescription)
+//    }
+//    else{
+//        self!.doAddUser()
+//    }
+//})
+//
+//func signUp(_ email :String,_ password: String, completion : @escaping (error?)-> Void ){
+//    Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+//        if error != nil{
+//            completion(error)
+//        }
+//        else{
+//            let firestoreDatabase = Firestore.firestore()
+//            let uid = result!.user.uid
+//            let document =  ["username":self.nameText.text!,"email":self.emailText.text!, "userId": uid]
+//
+//            firestoreDatabase.collection("user").document(uid).setData(document) {
+//                guard let error = $0 else { return }
+//                print(error)
+//            }
+//            completion(nil)
+//        }
+//    }
+//
+//}
 
+
+
+
+
+
+
+
+
+
+
+//        if !presenter!.isPasswordValid(passwordText.text!) {
+//            print("pswd check")
+//            displayAlertMessage(title: "Alert", message: failureMsg)
+//        }
+//
+//        if !presenter!.isValidEmail(emailText.text!) {
+//
+//            print("mail check")
+//            displayAlertMessage(title: "Alert", message: failureMsg)
+//        }
+//
+//        doAddUser()

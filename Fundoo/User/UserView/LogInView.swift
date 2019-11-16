@@ -9,7 +9,5 @@
 import Foundation
 
 protocol LoginView{
-    
     func onFailure(message: String)
-    
 }

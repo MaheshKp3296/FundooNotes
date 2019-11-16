@@ -16,7 +16,7 @@ protocol LogInPresenter {
 //@available(iOS 13.0, *)
 class LogInPresenterImpl : LogInPresenter {
     var retrieveModel : UserModel?
-    var view :  LoginView
+    var view : LoginView
     
     init(view : LoginView){
         self.view = view

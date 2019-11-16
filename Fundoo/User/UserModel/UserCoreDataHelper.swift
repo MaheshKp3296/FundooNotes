@@ -31,7 +31,7 @@ class UserManager : UserModel {
     }()
     
     func newUser() -> User {
-        let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context) as! User
+        let user = NSEntityDescription.insertNewObject(forEntityName: UserEntity.EntityName.rawValue, into: context) as! User
         
         return user
     }
@@ -41,7 +41,7 @@ class UserManager : UserModel {
             try context.save()
         }
         catch let error {
-            print("Could not save \(error.localizedDescription)")
+            print(error.localizedDescription)
         }
     }
     
@@ -52,13 +52,13 @@ class UserManager : UserModel {
     
     func retrieveUsers() -> [User] {
         do {
-            let fetchRequest = NSFetchRequest<User>(entityName: "User")
+            let fetchRequest = NSFetchRequest<User>(entityName: UserEntity.EntityName.rawValue)
             let results = try context.fetch(fetchRequest)
             
             return results
         }
         catch let error {
-            print("Could not fetch \(error.localizedDescription)")
+            print(error.localizedDescription)
             
             return []
         }
@@ -66,9 +66,9 @@ class UserManager : UserModel {
     
     func addUser(user : UserInfo) {
         let newUser = self.newUser()
-        newUser.setValue(user.name, forKey: "name")
-        newUser.setValue(user.email, forKey: "email")
-        newUser.setValue(user.password, forKey: "password")
+        newUser.setValue(user.name, forKey: UserEntity.Name.rawValue)
+        newUser.setValue(user.email, forKey: UserEntity.email.rawValue)
+        newUser.setValue(user.password, forKey: UserEntity.password.rawValue)
         saveUser()
     }
 }

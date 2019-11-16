@@ -10,6 +10,8 @@ import CoreData
 import UserNotifications
 
 class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate, NoteDetailView {
+    
+    
     @IBOutlet weak var bottomContainerView: UIView!
     @IBOutlet var bottomMenuConstraint: NSLayoutConstraint!
     @IBOutlet var noteTitleField: UITextField!
@@ -20,9 +22,10 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
     var value : Int!
     var noteDate : Date?
     var textViewPlaceHolder = "Note..."
-    var note : NoteInfo?
+    var note : NoteInfoApi?
+    var notePosition : Int?
     var noteImp : Bool = false {
-        didSet{
+        didSet {
             let image : UIImage!
             if noteImp {
                 image = UIImage(named: "impNote.png")
@@ -65,8 +68,12 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         super.viewWillAppear(animated)
     }
     
-    func fillDetailView(note : NoteInfo) {
+    func fillDetailView(note : NoteInfoApi) {
         self.note = note
+    }
+    
+    func getMaxPosition(notePosition: Int) {
+        self.notePosition = notePosition
     }
     
     private func initMode() {
@@ -78,13 +85,14 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         }
     }
     
-    private func initEditMode(note : NoteInfo) {
-        noteTitleField.text = note.noteTitle
-        noteDescriptionField.text = note.noteDescription
-        noteColor = note.noteColor
-        noteArchive = note.noteArchive
-        noteImp = note.noteImp
-        setColor(note.noteColor)
+    private func initEditMode(note : NoteInfoApi) {
+        noteTitleField.text = note.title
+        noteDescriptionField.text = note.description
+        noteColor = note.color
+        noteArchive = note.isArchived
+        noteImp = note.isPined
+       // noteDate = note.reminder
+        setColor(note.color)
     }
     
     private func initCreateMode() {
@@ -99,10 +107,10 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         switch identifier {
         case "saveNoteSegue" where note != nil:
-            note?.noteTitle = noteTitleField.text ??  ""
-            note?.noteDescription = noteDescriptionField.text ?? ""
-            note?.noteColor = noteColor ?? ""
-            note?.noteReminder = noteDate
+            note?.title = noteTitleField.text ??  ""
+            note?.description = noteDescriptionField.text ?? ""
+            note?.color = noteColor ?? ""
+           // note?.reminder = noteDate
             notePresenter?.updateNote(noteInfo : note!)
             if noteDate != nil{
                 scheduleNotification()
@@ -113,13 +121,11 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
                 return
             }
             else {
-                print("Color value = \(value ?? 0)")
-                let noteDetails = NoteInfo.init(notePosition: (notePresenter?.getMaxPositon())! + 1, noteTitle: noteTitleField.text ?? "" , noteDescription: noteDescriptionField.text ?? "", noteColor: noteColor ?? "#FFFFFF", noteArchive: noteArchive , noteImp: noteImp, noteReminder: noteDate )
+                let noteDetails = NoteInfoApi.init(title : noteTitleField.text ?? "" , description: noteDescriptionField.text ?? "", isPined: noteImp , isArchived: noteArchive , color: noteColor ?? "#FFFFFF" )
                 notePresenter?.createNote(noteInfo: noteDetails)
                 if noteDate != nil {
                     scheduleNotification()
                 }
-                
             }
             
         case "deleteNoteSegue" where note != nil:
@@ -127,14 +133,23 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
             
         case "archiveNoteSegue" where note != nil:
             noteArchive = !noteArchive
-            note?.noteArchive = noteArchive
+            note?.isArchived = noteArchive
             notePresenter?.updateNote(noteInfo: note!)
     
         case "setReminderSegue" :
-            let reminderVC = segue.destination as? NotificationViewController
-            reminderVC!.completionBlock = {[weak self] date in
-            self?.noteDate = date
-            }
+            print("")
+//            let reminderVC = segue.destination as? NotificationViewController
+//            reminderVC!.completionBlock = {[weak self] date in
+//                self?.noteDate = date
+//
+//            }
+//            if note != nil{
+//            note?.reminder = self.noteDate
+//            notePresenter?.updateNote(noteInfo: note!)
+//            }
+//            else {
+//                return
+//            }
             
         default:
             print("unexpected segue identifier")
@@ -229,7 +244,7 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         
     }
     
-    func setColor(_ hexColorString : String){
+    func setColor(_ hexColorString : String) {
         let viewColor : UIColor = Helper.hexStringToUIColor(hexColorString)
         self.view.backgroundColor = viewColor
         noteTitleField.backgroundColor = viewColor
@@ -237,9 +252,10 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
     }
     
     @IBAction func impNotes(_ sender: Any) {
+        
         noteImp = !noteImp
         if note != nil {
-            note?.noteImp = noteImp
+            note?.isPined = noteImp
             notePresenter?.updateNote(noteInfo: note!)
         }
         
@@ -262,4 +278,4 @@ class NotesDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
 
  presenter -> note <- 
  
- */
+**/

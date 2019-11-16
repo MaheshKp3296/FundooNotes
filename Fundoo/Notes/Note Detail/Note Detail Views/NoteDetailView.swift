@@ -9,5 +9,6 @@
 import Foundation
 
 protocol NoteDetailView {
-    func fillDetailView(note : NoteInfo)
+    func fillDetailView(note : NoteInfoApi)
+    func getMaxPosition(notePosition: Int)
 }

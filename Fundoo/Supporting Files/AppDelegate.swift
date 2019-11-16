@@ -4,31 +4,53 @@
 //
 //  Created by User on 24/09/19.
 //  Copyright © 2019 BridgeLabz. All rights reserved.
-//
 
+// *****************************shri shri David maharaj ki kripa*************************///////////////////////////////
 import UIKit
 import CoreData
 import UserNotifications
+import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
+import Firebase
+import FirebaseAuth
 
 //@available(iOS 13.0, *)
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    let notificationCenter = UNUserNotificationCenter.current()
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    
+    
 
     var window: UIWindow?
 
-
+    override init() {
+        FirebaseApp.configure()
+    }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         check()
-        // Override point for customization after application launch.
-        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
-        notificationCenter.requestAuthorization(options: options) {
-            (didAllow, error) in
-            if !didAllow {
-                print("User has declined notifications")
-            }
-        }
-        return true
+        
+        GIDSignIn.sharedInstance().clientID = "233226234304-n1ek1ajfb0a11bna7av1mektms61h8jr.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self as? GIDSignInDelegate
+    
+       // FirebaseApp.configure()
+        
+        
+        UNUserNotificationCenter.current().delegate = self
+        
+        
+      return true
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+         completionHandler([.alert,.badge])
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        let googleDIdHandle = GIDSignIn.sharedInstance()?.handle(url)
+      //  let fbIdHandle = ApplicationDelegate.shared.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        return googleDIdHandle! //|| fbIdHandle
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

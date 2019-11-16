@@ -19,10 +19,10 @@ class NotificationViewController: UIViewController {
         super.viewDidLoad()
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            if granted{
+            if granted {
                 print("permission granted")
             }
-            else{
+            else {
                 print("denied")
             }
         }
@@ -34,10 +34,4 @@ class NotificationViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
-    @IBAction func backButton(_ sender: Any) {
-       dismiss(animated: true, completion: nil)
-    }
-    
-
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>233226234304-n1ek1ajfb0a11bna7av1mektms61h8jr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.233226234304-n1ek1ajfb0a11bna7av1mektms61h8jr</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAAevDiQwEIRYlze-_XcA0WNuOJkop_Ab4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>233226234304</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.BridgeLabz.Fundoo</string>
+	<key>PROJECT_ID</key>
+	<string>fundoo-1572524623740</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fundoo-1572524623740.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:233226234304:ios:640b7999f11e2273074025</string>
+	<key>DATABASE_URL</key>
+	<string>https://fundoo-1572524623740.firebaseio.com</string>
+</dict>
+</plist>

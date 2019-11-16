@@ -9,52 +9,54 @@
 import Foundation
 
 protocol NoteDetailPresenter {
-    func updateNote(noteInfo : NoteInfo)
-    func createNote(noteInfo : NoteInfo)
-    func deleteNote(noteInfo : NoteInfo)
-    func getMaxPositon() -> Int
-    func archiveNote(noteinfo : NoteInfo)
+    func updateNote(noteInfo : NoteInfoApi)
+    func createNote(noteInfo : NoteInfoApi)
+    func deleteNote(noteInfo : NoteInfoApi)
+  //  func getMaxPositon()
+    func archiveNote(noteinfo : NoteInfoApi)
 }
 
 
 class NoteDetailPresenterImpl: NoteDetailPresenter  {
     
-    var noteModel : NoteModel!
+    var noteModel : RESTNoteModel!
     private var view : NoteDetailView
     
     init(view : NoteDetailView) {
         self.view = view
     }
     
-    func createNote(noteInfo : NoteInfo){
-        noteModel = NoteManager()
+    func createNote(noteInfo : NoteInfoApi){
+        noteModel = NoteNetworkManagar()
          noteModel.addNotes(note: noteInfo)
     }
     
-    func updateNote(noteInfo: NoteInfo){
-        noteModel = NoteManager()
+    func updateNote(noteInfo: NoteInfoApi){
+        noteModel = NoteNetworkManagar()
         noteModel.updateNote( noteInfo: noteInfo)
     }
     
-    func deleteNote(noteInfo : NoteInfo){
-        noteModel = NoteManager()
+    func deleteNote(noteInfo : NoteInfoApi){
+        noteModel = NoteNetworkManagar()
         noteModel.delete(noteInfo: noteInfo)
     }
     
-    func getMaxPositon() -> Int {
-        noteModel = NoteManager()
-        let noteList = noteModel.getListOfNotes()
-        var max = 0
-        for note in noteList{
-            if note.notePosition > max{
-                max = Int(note.notePosition)
-            }
-        }
-        return max
-    }
+//    func getMaxPositon() {
+//        noteModel = FireBaseNoteManager()
+//        noteModel.readListOfNotes { (noteList, error) in
+//            for note in noteList!{
+//              var max = 0
+//                if note.position > max{
+//                    max = Int(note.position)
+//                }
+//                self.view.getMaxPosition(notePosition: max)
+//            }
+//
+//        }
+//    }
     
-    func archiveNote(noteinfo : NoteInfo){
-        noteModel = NoteManager()
+    func archiveNote(noteinfo : NoteInfoApi){
+        noteModel = NoteNetworkManagar()
         noteModel.updateNote(noteInfo: noteinfo)
         
     }

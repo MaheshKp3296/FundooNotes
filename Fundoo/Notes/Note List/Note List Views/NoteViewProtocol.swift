@@ -9,5 +9,8 @@
 import Foundation
 
 protocol NoteView {
-    func getListOfNotes(listOfNotes: [NoteInfo])
+    func getListOfArchivedNotes(listOfNotes: [NoteInfoApi])
+    func getOriginalListOfNotes(listOfNotes: [NoteInfoApi])
+    func getListOfImpNotes(listOfNotes: [NoteInfoApi])
+    func getListOfReminderNotes(listOfNotes: [NoteInfoApi])
 }

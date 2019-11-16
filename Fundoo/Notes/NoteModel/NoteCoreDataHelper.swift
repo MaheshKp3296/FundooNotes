@@ -8,37 +8,29 @@
 
 import UIKit
 import CoreData
-protocol NoteModel {
-    func newNote() -> Note
-    func saveNote()
-    func delete(noteInfo: NoteInfo)
-    func retrieveNotes() -> [Note]
-    func addNotes(note: NoteInfo)
-    func updateNote(noteInfo : NoteInfo)
-    func getListOfNotes() -> [NoteInfo]
-}
+import Firebase
 
 
-class NoteManager: NoteModel {
-    
+class NoteManager: CoreDataNoteModel {
+   
     private let persistentContainer : NSPersistentContainer = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError()
         }
-        
+
         return appDelegate.persistentContainer
     }()
-    
+
     private lazy var context: NSManagedObjectContext = {
         return persistentContainer.viewContext
     }()
-    
+
     func newNote() -> Note {
         let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as! Note
-        
+
         return note
     }
-    
+
     func saveNote() {
         do {
             try context.save()
@@ -46,10 +38,10 @@ class NoteManager: NoteModel {
             print("Could not save \(error.localizedDescription)")
         }
     }
-    
+
     func delete(noteInfo: NoteInfo) {
         if let idUrl = URL.init(string: noteInfo.noteId!) {
-           
+
             let coordinator = context.persistentStoreCoordinator!
             let managedObjectID = coordinator.managedObjectID(forURIRepresentation: idUrl)
             if let note = getById(id: managedObjectID!) {
@@ -58,7 +50,7 @@ class NoteManager: NoteModel {
             saveNote()
         }
     }
-    
+
     func retrieveNotes() -> [Note] {
         //
         do {
@@ -68,11 +60,11 @@ class NoteManager: NoteModel {
             return results
         } catch let error {
             print("Could not fetch \(error.localizedDescription)")
-            
+
             return []
         }
     }
-    
+
     func addNotes(note : NoteInfo) {
         let newNote = self.newNote()
         newNote.setValue(note.noteTitle, forKey: "noteTitle")
@@ -84,12 +76,12 @@ class NoteManager: NoteModel {
         newNote.setValue(note.noteReminder, forKey: "noteReminder")
         saveNote()
     }
-    
+
     func updateNote(noteInfo: NoteInfo){
         print(noteInfo.noteId!)
-        
+
         if let idUrl = URL.init(string: noteInfo.noteId!) {
-           
+
             let coordinator = context.persistentStoreCoordinator!
             let managedObjectID = coordinator.managedObjectID(forURIRepresentation: idUrl)
             if let note = getById(id: managedObjectID!) {
@@ -100,12 +92,12 @@ class NoteManager: NoteModel {
                 note.noteArchive = noteInfo.noteArchive
                 note.noteImp = noteInfo.noteImp
                 note.noteReminder = noteInfo.noteReminder
-                
+
             }
             saveNote()
         }
     }
-    
+
     func getListOfNotes() -> [NoteInfo] {
         var listOfNotes = [NoteInfo]()
         let results = retrieveNotes()
@@ -116,22 +108,23 @@ class NoteManager: NoteModel {
             var noteDetails = NoteInfo.init(notePosition: Int(result.notePosition), noteTitle: noteTitle!, noteDescription: noteDescription!, noteColor: result.noteColor!, noteArchive: result.noteArchive, noteImp: result.noteImp, noteReminder: result.noteReminder)
             noteDetails.noteId = result.objectID.uriRepresentation().absoluteString
             listOfNotes.append(noteDetails)
-            
+
         }
-        print("NoteCoreDatalistOfNotes : \(listOfNotes)")
-       
         return listOfNotes
     }
-    
+
     func getById(id: NSManagedObjectID) -> Note? {
         return context.object(with: id) as? Note
     }
-    
-    
-    
 
-    
 }
+
+
+
+
+
+
+
 
 
 /*

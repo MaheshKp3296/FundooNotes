@@ -8,24 +8,20 @@
 
 import UIKit
 import CoreData
+import FirebaseAuth
+import Firebase
 //private let reuseIdentifier = "Cell"
 
 
 class NoteListCollectionViewController: UICollectionViewController, NoteView {
     
-    var originalListOfNotes = [NoteInfo]()
+    var noteListToDisplay = [NoteInfoApi]()
     {
         didSet {
             collectionView.reloadData()
         }
     }
-    var noteListToDisplay = [NoteInfo]()
-    {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
-    var searchedListOfNotes = [NoteInfo]()
+    var searchedListOfNotes = [NoteInfoApi]()
 
     fileprivate func isLoggedIn() -> Bool{
         return UserDefaults.standard.bool(forKey: "isLoggedIn")
@@ -48,6 +44,8 @@ class NoteListCollectionViewController: UICollectionViewController, NoteView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       //  print(Auth.auth().currentUser?.email as Any)
+       // FirebaseApp.configure()
         createSearchBar()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(sideMenuViews),
@@ -58,17 +56,30 @@ class NoteListCollectionViewController: UICollectionViewController, NoteView {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         noteListPresenter = NoteListViewPresenterImpl(view: self)
-        noteListPresenter?.initUI()
-        noteListToDisplay = originalListOfNotes
+        noteListPresenter?.getOriginalListOfNotes()
         searchedListOfNotes = noteListToDisplay
         
     }
+
+    func getListOfArchivedNotes(listOfNotes: [NoteInfoApi]) {
+           self.noteListToDisplay = listOfNotes
+       }
     
-    func getListOfNotes(listOfNotes: [NoteInfo]) {
-        self.originalListOfNotes = listOfNotes.sorted(by: {$0.notePosition < $1.notePosition })
-        
+    func getOriginalListOfNotes(listOfNotes: [NoteInfoApi]) {
+          self.noteListToDisplay = listOfNotes
     }
+    
+    func getListOfImpNotes(listOfNotes: [NoteInfoApi]) {
+        self.noteListToDisplay = listOfNotes
+    }
+    
+    func getListOfReminderNotes(listOfNotes: [NoteInfoApi]) {
+        self.noteListToDisplay = listOfNotes
+    }
+    
+       
     
     @IBAction func gridListBtn(_ sender: Any) {
         switch displayView.selectedSegmentIndex {
@@ -104,7 +115,7 @@ class NoteListCollectionViewController: UICollectionViewController, NoteView {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "noteCell", for: indexPath) as! NoteCollectionViewCell
-        var note : NoteInfo!
+        var note : NoteInfoApi!
         if searchActive == true {
             note = searchedListOfNotes[indexPath.row]
         }
@@ -120,9 +131,6 @@ class NoteListCollectionViewController: UICollectionViewController, NoteView {
     }
     
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
-        if segue.identifier == "archive" {
-            noteListToDisplay = (noteListPresenter?.getArchivedNotes())!
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -132,7 +140,7 @@ class NoteListCollectionViewController: UICollectionViewController, NoteView {
         case "displayNoteSegue":
             print("note cell tapped")
             guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return }
-            var note : NoteInfo!
+            var note : NoteInfoApi!
             if searchActive == true {
                 note = searchedListOfNotes[indexPath.item]
             }
@@ -158,23 +166,23 @@ class NoteListCollectionViewController: UICollectionViewController, NoteView {
     override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let temp = noteListToDisplay.remove(at: sourceIndexPath.item)
         noteListToDisplay.insert(temp, at: destinationIndexPath.item)
-        noteListPresenter?.moveNotes(sourceIndexPath.item + 1,destinationIndexPath.item + 1)
+      //  noteListPresenter?.moveNotes(sourceIndexPath.item + 1,destinationIndexPath.item + 1)
     }
     
     @objc func sideMenuViews(_ notification: NSNotification){
         let value = notification.userInfo?["value"] as? Int
         switch value {
         case 1:
-            noteListToDisplay = originalListOfNotes
+            noteListPresenter?.getOriginalListOfNotes()
             
         case 2:
-            noteListToDisplay = (noteListPresenter?.getRemindedNotes())!
+            noteListPresenter?.getReminderNotes()
             
         case 3:
-            noteListToDisplay = (noteListPresenter?.getImpNotes())!
+            noteListPresenter?.getImpNotes()
             
         case 4:
-            noteListToDisplay = (noteListPresenter?.getArchivedNotes())!
+            noteListPresenter?.getArchivedNotes()
             
         default:
             print("error")
@@ -218,7 +226,7 @@ extension NoteListCollectionViewController : UISearchBarDelegate {
         
         searchedListOfNotes = noteListToDisplay.filter({NoteInfo -> Bool in guard let text = searchBar.text?.lowercased() else
         { return false }
-            return NoteInfo.noteTitle.lowercased().contains(text) || NoteInfo.noteDescription.lowercased().contains(text)
+            return NoteInfo.title.lowercased().contains(text) || NoteInfo.description.lowercased().contains(text)
         })
         
         if searchedListOfNotes.count == 0 {

@@ -16,18 +16,29 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var decriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel?
+    @IBOutlet weak var remImage: UIImageView!
     
-    func configureCell(note : NoteInfo) {
-        self.backgroundColor = Helper.hexStringToUIColor(note.noteColor)
-        self.titleLabel.text = note.noteTitle
-        self.decriptionLabel.text = note.noteDescription
+    func configureCell(note : NoteInfoApi) {
+        self.backgroundColor = Helper.hexStringToUIColor(note.color)
+        self.titleLabel.text = note.title
+        self.decriptionLabel.text = note.description
+//        if note.reminder != nil {
+//            let noteDateText = convertDateIntoString(dateString: note.reminder!)
+//            dateLabel?.text = noteDateText
+//            remImage.image = UIImage(named: "fundooRem.png")
+//        }
+//        else
+//        {
+            dateLabel?.text = ""
+            remImage.image = nil
+      //  }
     }
     
     func convertDateIntoString(dateString : Date) -> String {
 
         let dateFormatter = DateFormatter()
 
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss +zzz"
+        dateFormatter.dateFormat = "MMM dd, hh:mm:ss "
 
         let dateObj = dateFormatter.string(from: dateString as Date)
 

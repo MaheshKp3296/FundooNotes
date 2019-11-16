@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5FFD9BD1212FAF41D6A8BD74 /* Pods_Fundoo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2F78D80A027202856A7813 /* Pods_Fundoo.framework */; };
 		CE057AD0233B4F9400636D0C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE057ACF233B4F9400636D0C /* LoginViewController.swift */; };
 		CE08DD062351B456002F8861 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD052351B456002F8861 /* User.swift */; };
 		CE08DD082351D3BF002F8861 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD072351D3BF002F8861 /* LogInView.swift */; };
@@ -23,22 +24,31 @@
 		CE122EFB2350753000752F84 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE122EFA2350753000752F84 /* SignUpPresenter.swift */; };
 		CE122EFD2350853600752F84 /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE122EFC2350853600752F84 /* LogInPresenter.swift */; };
 		CE1E5AD9234756EA004EFE1F /* NotesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E5AD8234756EA004EFE1F /* NotesDetailViewController.swift */; };
+		CE210EED237EB06500A1227F /* NoteNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE210EEC237EB06500A1227F /* NoteNetworkManager.swift */; };
 		CE40F1182369C0300081E805 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F1172369C0300081E805 /* Helper.swift */; };
+		CE43310823759BEB00D17468 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE43310723759BEB00D17468 /* SignUpViewController.swift */; };
+		CE4D32D8237C226C00E09B70 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D32D7237C226C00E09B70 /* AppUtil.swift */; };
 		CE503EFE23680FEC009720D4 /* NoteDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE503EFD23680FEC009720D4 /* NoteDetailPresenter.swift */; };
 		CE503F00236819D0009720D4 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE503EFF236819D0009720D4 /* NotificationViewController.swift */; };
+		CE7983EC237147B6003B51E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE7983EB237147B6003B51E2 /* GoogleService-Info.plist */; };
+		CE7983EF2371B8F9003B51E2 /* String Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7983EE2371B8F9003B51E2 /* String Constants.swift */; };
 		CE7AB34C233A0E4F00F0EDD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7AB34B233A0E4F00F0EDD7 /* AppDelegate.swift */; };
 		CE7AB351233A0E4F00F0EDD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7AB34F233A0E4F00F0EDD7 /* Main.storyboard */; };
 		CE7AB354233A0E4F00F0EDD7 /* Fundoo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE7AB352233A0E4F00F0EDD7 /* Fundoo.xcdatamodeld */; };
 		CE7AB356233A0E5800F0EDD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7AB355233A0E5800F0EDD7 /* Assets.xcassets */; };
 		CE7AB359233A0E5800F0EDD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7AB357233A0E5800F0EDD7 /* LaunchScreen.storyboard */; };
-		CE7AB361233A520300F0EDD7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7AB360233A520300F0EDD7 /* SignUpViewController.swift */; };
 		CE8BCA38235EE65B00CA5956 /* BottomMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8BCA37235EE65B00CA5956 /* BottomMenuTableViewController.swift */; };
 		CE8BCA40235F222E00CA5956 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8BCA3F235F222E00CA5956 /* ColorCollectionViewCell.swift */; };
+		CEC3786C236B0AF8006745C7 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEC3786B236B0AF8006745C7 /* credentials.plist */; };
+		CEC890D6237D3EC0005225B0 /* NoteModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC890D5237D3EC0005225B0 /* NoteModelProtocol.swift */; };
+		CEC890D8237D3F5B005225B0 /* FIRNoteDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC890D7237D3F5B005225B0 /* FIRNoteDataHelper.swift */; };
 		CED4C6052348C55F0022C105 /* NoteCoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED4C6042348C55F0022C105 /* NoteCoreDataHelper.swift */; };
 		CEFDC076234F5D1100F1AEFF /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEFDC075234F5D1000F1AEFF /* Dashboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30561A23AA982FE35F98544E /* Pods-Fundoo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fundoo.debug.xcconfig"; path = "Target Support Files/Pods-Fundoo/Pods-Fundoo.debug.xcconfig"; sourceTree = "<group>"; };
+		6A2F78D80A027202856A7813 /* Pods_Fundoo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fundoo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE057ACF233B4F9400636D0C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE08DD052351B456002F8861 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CE08DD072351D3BF002F8861 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
@@ -55,9 +65,14 @@
 		CE122EFA2350753000752F84 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		CE122EFC2350853600752F84 /* LogInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
 		CE1E5AD8234756EA004EFE1F /* NotesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDetailViewController.swift; sourceTree = "<group>"; };
+		CE210EEC237EB06500A1227F /* NoteNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteNetworkManager.swift; sourceTree = "<group>"; };
 		CE40F1172369C0300081E805 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		CE43310723759BEB00D17468 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CE4D32D7237C226C00E09B70 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
 		CE503EFD23680FEC009720D4 /* NoteDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailPresenter.swift; sourceTree = "<group>"; };
 		CE503EFF236819D0009720D4 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		CE7983EB237147B6003B51E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE7983EE2371B8F9003B51E2 /* String Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String Constants.swift"; sourceTree = "<group>"; };
 		CE7AB348233A0E4F00F0EDD7 /* Fundoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fundoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7AB34B233A0E4F00F0EDD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7AB350233A0E4F00F0EDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,11 +80,14 @@
 		CE7AB355233A0E5800F0EDD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE7AB358233A0E5800F0EDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE7AB35A233A0E5800F0EDD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE7AB360233A520300F0EDD7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CE8BCA37235EE65B00CA5956 /* BottomMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuTableViewController.swift; sourceTree = "<group>"; };
 		CE8BCA3F235F222E00CA5956 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		CEC3786B236B0AF8006745C7 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
+		CEC890D5237D3EC0005225B0 /* NoteModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModelProtocol.swift; sourceTree = "<group>"; };
+		CEC890D7237D3F5B005225B0 /* FIRNoteDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRNoteDataHelper.swift; sourceTree = "<group>"; };
 		CED4C6042348C55F0022C105 /* NoteCoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCoreDataHelper.swift; sourceTree = "<group>"; };
 		CEFDC075234F5D1000F1AEFF /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
+		FD55BB97BE16136DC7F5573C /* Pods-Fundoo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fundoo.release.xcconfig"; path = "Target Support Files/Pods-Fundoo/Pods-Fundoo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +95,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FFD9BD1212FAF41D6A8BD74 /* Pods_Fundoo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		479D19B579327B1477B9F87C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A2F78D80A027202856A7813 /* Pods_Fundoo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE0735D623549CF900AA3449 /* BottomMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				CE057ACF233B4F9400636D0C /* LoginViewController.swift */,
-				CE7AB360233A520300F0EDD7 /* SignUpViewController.swift */,
+				CE43310723759BEB00D17468 /* SignUpViewController.swift */,
 				CE7AB34F233A0E4F00F0EDD7 /* Main.storyboard */,
 				CE08DD072351D3BF002F8861 /* LogInView.swift */,
 				CE08DD092351E3A0002F8861 /* SignView.swift */,
@@ -145,8 +172,11 @@
 		CE122EF92350682200752F84 /* NoteModel */ = {
 			isa = PBXGroup;
 			children = (
-				CED4C6042348C55F0022C105 /* NoteCoreDataHelper.swift */,
 				CE08DD0D2351F229002F8861 /* NoteInfo.swift */,
+				CEC890D5237D3EC0005225B0 /* NoteModelProtocol.swift */,
+				CEC890D7237D3F5B005225B0 /* FIRNoteDataHelper.swift */,
+				CED4C6042348C55F0022C105 /* NoteCoreDataHelper.swift */,
+				CE210EEC237EB06500A1227F /* NoteNetworkManager.swift */,
 			);
 			path = NoteModel;
 			sourceTree = "<group>";
@@ -191,7 +221,6 @@
 				CE0E6F3B234DFD7000787F04 /* NoteDetailView.swift */,
 				CE1E5AD8234756EA004EFE1F /* NotesDetailViewController.swift */,
 				CE503EFF236819D0009720D4 /* NotificationViewController.swift */,
-				CE40F1172369C0300081E805 /* Helper.swift */,
 				CE0735D623549CF900AA3449 /* BottomMenu */,
 			);
 			path = "Note Detail Views";
@@ -209,11 +238,23 @@
 			path = "Note List Views";
 			sourceTree = "<group>";
 		};
+		CE7983ED2371B8AC003B51E2 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CE40F1172369C0300081E805 /* Helper.swift */,
+				CE7983EE2371B8F9003B51E2 /* String Constants.swift */,
+				CE4D32D7237C226C00E09B70 /* AppUtil.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		CE7AB33F233A0E4E00F0EDD7 = {
 			isa = PBXGroup;
 			children = (
 				CE7AB34A233A0E4F00F0EDD7 /* Fundoo */,
 				CE7AB349233A0E4F00F0EDD7 /* Products */,
+				F382038D455403B2CBF8B1D7 /* Pods */,
+				479D19B579327B1477B9F87C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -228,11 +269,13 @@
 		CE7AB34A233A0E4F00F0EDD7 /* Fundoo */ = {
 			isa = PBXGroup;
 			children = (
+				CE7983ED2371B8AC003B51E2 /* Helper */,
 				CE122EEF235064D200752F84 /* User */,
 				CE122EF6235067F400752F84 /* Notes */,
 				CE9ABC68233DD06E005D0500 /* Supporting Files */,
 				CE7AB355233A0E5800F0EDD7 /* Assets.xcassets */,
 				CE7AB35A233A0E5800F0EDD7 /* Info.plist */,
+				CE7983EB237147B6003B51E2 /* GoogleService-Info.plist */,
 			);
 			path = Fundoo;
 			sourceTree = "<group>";
@@ -251,9 +294,19 @@
 			children = (
 				CE7AB352233A0E4F00F0EDD7 /* Fundoo.xcdatamodeld */,
 				CE7AB34B233A0E4F00F0EDD7 /* AppDelegate.swift */,
+				CEC3786B236B0AF8006745C7 /* credentials.plist */,
 				CE7AB357233A0E5800F0EDD7 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F382038D455403B2CBF8B1D7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				30561A23AA982FE35F98544E /* Pods-Fundoo.debug.xcconfig */,
+				FD55BB97BE16136DC7F5573C /* Pods-Fundoo.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,9 +316,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE7AB35D233A0E5800F0EDD7 /* Build configuration list for PBXNativeTarget "Fundoo" */;
 			buildPhases = (
+				26064FB04DCB788DD5E4E7F1 /* [CP] Check Pods Manifest.lock */,
 				CE7AB344233A0E4F00F0EDD7 /* Sources */,
 				CE7AB345233A0E4F00F0EDD7 /* Frameworks */,
 				CE7AB346233A0E4F00F0EDD7 /* Resources */,
+				E8FF8E1BDA79A237FF182486 /* [CP] Embed Pods Frameworks */,
+				0B5E37174DE18AB18CA025A1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -315,13 +371,74 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEFDC076234F5D1100F1AEFF /* Dashboard.storyboard in Resources */,
+				CEC3786C236B0AF8006745C7 /* credentials.plist in Resources */,
 				CE7AB359233A0E5800F0EDD7 /* LaunchScreen.storyboard in Resources */,
 				CE7AB356233A0E5800F0EDD7 /* Assets.xcassets in Resources */,
 				CE7AB351233A0E4F00F0EDD7 /* Main.storyboard in Resources */,
+				CE7983EC237147B6003B51E2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0B5E37174DE18AB18CA025A1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fundoo/Pods-Fundoo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fundoo/Pods-Fundoo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fundoo/Pods-Fundoo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		26064FB04DCB788DD5E4E7F1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fundoo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8FF8E1BDA79A237FF182486 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fundoo/Pods-Fundoo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fundoo/Pods-Fundoo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fundoo/Pods-Fundoo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE7AB344233A0E4F00F0EDD7 /* Sources */ = {
@@ -331,10 +448,13 @@
 				CE08DD082351D3BF002F8861 /* LogInView.swift in Sources */,
 				CE122EFD2350853600752F84 /* LogInPresenter.swift in Sources */,
 				CE503F00236819D0009720D4 /* NotificationViewController.swift in Sources */,
+				CEC890D6237D3EC0005225B0 /* NoteModelProtocol.swift in Sources */,
 				CE0E6F3C234DFD7000787F04 /* NoteDetailView.swift in Sources */,
 				CE1E5AD9234756EA004EFE1F /* NotesDetailViewController.swift in Sources */,
 				CE0966642345E714009C6685 /* DashboardVC.swift in Sources */,
+				CE43310823759BEB00D17468 /* SignUpViewController.swift in Sources */,
 				CE122EFB2350753000752F84 /* SignUpPresenter.swift in Sources */,
+				CEC890D8237D3F5B005225B0 /* FIRNoteDataHelper.swift in Sources */,
 				CE8BCA38235EE65B00CA5956 /* BottomMenuTableViewController.swift in Sources */,
 				CE08DD0A2351E3A0002F8861 /* SignView.swift in Sources */,
 				CE08DD062351B456002F8861 /* User.swift in Sources */,
@@ -344,15 +464,17 @@
 				CE8BCA40235F222E00CA5956 /* ColorCollectionViewCell.swift in Sources */,
 				CE0966662345E7C6009C6685 /* SideMenuController.swift in Sources */,
 				CED4C6052348C55F0022C105 /* NoteCoreDataHelper.swift in Sources */,
+				CE210EED237EB06500A1227F /* NoteNetworkManager.swift in Sources */,
 				CE0E6F35234DBCB800787F04 /* NoteListCollectionViewController.swift in Sources */,
-				CE7AB361233A520300F0EDD7 /* SignUpViewController.swift in Sources */,
 				CE0E6F37234DBF7600787F04 /* NoteCollectionViewCell.swift in Sources */,
 				CE122EF52350655400752F84 /* UserCoreDataHelper.swift in Sources */,
 				CE08DD0C2351F0B2002F8861 /* NoteListViewPresenter.swift in Sources */,
 				CE503EFE23680FEC009720D4 /* NoteDetailPresenter.swift in Sources */,
 				CE40F1182369C0300081E805 /* Helper.swift in Sources */,
 				CE057AD0233B4F9400636D0C /* LoginViewController.swift in Sources */,
+				CE4D32D8237C226C00E09B70 /* AppUtil.swift in Sources */,
 				CE7AB354233A0E4F00F0EDD7 /* Fundoo.xcdatamodeld in Sources */,
+				CE7983EF2371B8F9003B51E2 /* String Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,9 +618,14 @@
 		};
 		CE7AB35E233A0E5800F0EDD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30561A23AA982FE35F98544E /* Pods-Fundoo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Fundoo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -513,9 +640,14 @@
 		};
 		CE7AB35F233A0E5800F0EDD7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD55BB97BE16136DC7F5573C /* Pods-Fundoo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Fundoo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
