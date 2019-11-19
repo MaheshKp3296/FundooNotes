@@ -28,43 +28,44 @@ class NoteListViewPresenterImpl: NoteListViewPresenter {
    func getOriginalListOfNotes() {
        noteListModel = NoteNetworkManagar()
         var noteList = [NoteInfoApi]()
-//        noteListModel.readListOfNotes { (listOfNotes, err) in
-//            for list in listOfNotes!{
-//                if list.noteArchive == false && list.noteImp == false {
-//                    noteList.append(list)
-//                }
-//            }
-//            AppUtil.showLog(tag: self.tag, message: "\(noteList)")
-//            self.view.getOriginalListOfNotes(listOfNotes: noteList)
+        noteListModel.readListOfNotes { (listOfNotes, err) in
+            for list in listOfNotes!{
+                if list.isArchived == false && list.isPined == false {
+                    noteList.append(list)
+                }
+            }
+            AppUtil.showLog(tag: self.tag, message: "\(noteList)")
+            self.view.getOriginalListOfNotes(listOfNotes: noteList)
 //        }
     }
+}
     
     func getArchivedNotes() {
         var noteList = [NoteInfoApi]()
-//        noteListModel = FireBaseNoteManager()
-//        noteListModel.readListOfNotes { (listOfNotes, err) in
-//            for list in listOfNotes!{
-//                if list.noteArchive == true {
-//                    noteList.append(list)
-//                }
-//            }
-//            AppUtil.showLog(tag: self.tag, message: "\(noteList)")
-//            self.view.getListOfArchivedNotes(listOfNotes: noteList)
-//        }
+        noteListModel = NoteNetworkManagar()
+        noteListModel.readListOfNotes { (listOfNotes, err) in
+            for list in listOfNotes!{
+                if list.isArchived == true {
+                    noteList.append(list)
+                }
+            }
+            AppUtil.showLog(tag: self.tag, message: "\(noteList)")
+            self.view.getListOfArchivedNotes(listOfNotes: noteList)
+        }
     }
     
     func getImpNotes() {
         var noteList = [NoteInfoApi]()
-//        noteListModel = FireBaseNoteManager()
-//        noteListModel.readListOfNotes { (listOfNotes, err) in
-//            for list in listOfNotes!{
-//                if list.noteImp == true {
-//                    noteList.append(list)
-//                }
-//            }
-//            AppUtil.showLog(tag: self.tag, message: "\(noteList)")
-//            self.view.getListOfImpNotes(listOfNotes: noteList)
-//        }
+        noteListModel = NoteNetworkManagar()
+        noteListModel.readListOfNotes { (listOfNotes, err) in
+            for list in listOfNotes!{
+                if list.isPined == true {
+                    noteList.append(list)
+                }
+            }
+          //  AppUtil.showLog(tag: self.tag, message: "\(noteList)")
+            self.view.getListOfImpNotes(listOfNotes: noteList)
+        }
     }
     
     func getReminderNotes(){
@@ -112,3 +113,4 @@ class NoteListViewPresenterImpl: NoteListViewPresenter {
        //    }
        
 }
+

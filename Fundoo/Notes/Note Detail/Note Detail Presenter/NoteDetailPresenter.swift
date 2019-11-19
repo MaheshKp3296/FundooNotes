@@ -13,7 +13,6 @@ protocol NoteDetailPresenter {
     func createNote(noteInfo : NoteInfoApi)
     func deleteNote(noteInfo : NoteInfoApi)
   //  func getMaxPositon()
-    func archiveNote(noteinfo : NoteInfoApi)
 }
 
 
@@ -55,11 +54,6 @@ class NoteDetailPresenterImpl: NoteDetailPresenter  {
 //        }
 //    }
     
-    func archiveNote(noteinfo : NoteInfoApi){
-        noteModel = NoteNetworkManagar()
-        noteModel.updateNote(noteInfo: noteinfo)
-        
-    }
- 
+
     
 }

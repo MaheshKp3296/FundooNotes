@@ -8,29 +8,19 @@
 
 import Foundation
 
-struct NoteInfo {
-    var noteId : String?
-    var notePosition : Int
-    var noteTitle : String
-    var noteDescription: String
-    var noteColor: String
-    var noteArchive: Bool
-    var noteImp: Bool
-    var noteReminder: Date?
-    
-    init(notePosition: Int, noteTitle : String, noteDescription : String, noteColor: String, noteArchive: Bool, noteImp: Bool, noteReminder : Date?) {
-        self.notePosition = notePosition
-        self.noteTitle = noteTitle
-        self.noteDescription = noteDescription
-        self.noteColor = noteColor
-        self.noteArchive = noteArchive
-        self.noteImp = noteImp
-        self.noteReminder = noteReminder
-    }
+struct NoteApi: Codable {
+    let data : NoteListResponseDetails
 }
 
-struct NoteInfoApi : Codable{
+struct NoteListResponseDetails : Codable {
+    var success : Bool
+    var message : String
+    var data : [NoteInfoApi]?
+}
 
+
+struct NoteInfoApi : Codable {
+        
         var  title: String
         var  description: String
         var  isPined: Bool
@@ -49,8 +39,17 @@ struct NoteInfoApi : Codable{
         var  collaberator: [String]?
         var  noteCheckLists: [String]?
         var  noteLabels: [String]?
-        var  user : [UserDetails]?
         var  questionAndAnswerNotes: [String]?
+        var  user : UserNoteInfo?
+        var asDictionary : [String:Any] {
+          let mirror = Mirror(reflecting: self)
+          let dict = Dictionary(uniqueKeysWithValues: mirror.children.lazy.map({ (label:String?,value:Any) -> (String,Any)? in
+            guard label != nil else { return nil }
+            return (label!,value)
+          }).compactMap{ $0 })
+          return dict
+        }
+      
 
     init(title : String, description: String, isPined: Bool, isArchived: Bool, color : String ){
         self.title = title
@@ -58,5 +57,48 @@ struct NoteInfoApi : Codable{
         self.isPined = isPined
         self.isArchived = isArchived
         self.color = color
+    }
+}
+
+struct UserNoteInfo : Codable{
+    var firstName : String?
+    var lastName : String?
+    var role : String?
+    var service : String?
+    var createdDate : String?
+    var modifiedDate : String?
+    var address : String?
+    var username : String?
+    var email : String?
+    var emailVerified : Bool?
+    var id : String?
+
+}
+
+
+
+
+
+
+
+
+struct NoteInfo {
+    var noteId : String?
+    var notePosition : Int
+    var noteTitle : String
+    var noteDescription: String
+    var noteColor: String
+    var noteArchive: Bool
+    var noteImp: Bool
+    var noteReminder: Date?
+    
+    init(notePosition: Int, noteTitle : String, noteDescription : String, noteColor: String, noteArchive: Bool, noteImp: Bool, noteReminder : Date?) {
+        self.notePosition = notePosition
+        self.noteTitle = noteTitle
+        self.noteDescription = noteDescription
+        self.noteColor = noteColor
+        self.noteArchive = noteArchive
+        self.noteImp = noteImp
+        self.noteReminder = noteReminder
     }
 }

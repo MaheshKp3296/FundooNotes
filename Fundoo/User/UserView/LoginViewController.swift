@@ -60,7 +60,8 @@ class LoginViewController: UIViewController, LoginView, GIDSignInDelegate, Login
                 return
             }
             if data["id"] != nil {
-                    self.doLogin(self.emailField.text!)
+                let email = data["email"]
+                self.doLogin(email as! String)
                 }
             else {
                 self.displayAlertMessage(title: "Alert", message: "Invalid email or password field" )

@@ -60,8 +60,8 @@ class SignUpViewController: UIViewController, SignUpView {
         }
         
         
-        apiSignUp()
-        doAddUser()
+        doSignUp()
+        dismissView()
         
     }
     
@@ -79,7 +79,7 @@ class SignUpViewController: UIViewController, SignUpView {
         present(alertController1, animated: true, completion: nil)
     }
     
-    private func doAddUser() {
+    private func dismissView() {
         //  let user = UserInfo(name: nameText.text!,email: emailText.text!,password: passwordText.text!)
         //  presenter?.registerUser(user: user)
         let myAlert = UIAlertController (title: "Registration Successful", message: "Please Login", preferredStyle: UIAlertController.Style.alert)
@@ -89,7 +89,7 @@ class SignUpViewController: UIViewController, SignUpView {
         self.present(myAlert, animated: true, completion: nil)
     }
     
-    func apiSignUp(){
+    func doSignUp(){
         
         let userDetails = UserDetails.init(username: nameText.text!, email: emailText.text!, password: passwordText.text!)
         guard let url  = URL(string: "http://fundoonotes.incubation.bridgelabz.com/api/user/userSignUp") else { return }
@@ -100,7 +100,9 @@ class SignUpViewController: UIViewController, SignUpView {
             let httpBody = try JSONEncoder().encode(userDetails)
              request.httpBody =  httpBody
         }
-        catch {}
+        catch let error {
+            print(error.localizedDescription)
+        }
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 

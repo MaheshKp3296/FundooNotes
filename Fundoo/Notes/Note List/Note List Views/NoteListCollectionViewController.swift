@@ -17,8 +17,11 @@ class NoteListCollectionViewController: UICollectionViewController, NoteView {
     
     var noteListToDisplay = [NoteInfoApi]()
     {
+        
         didSet {
-            collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+        }
         }
     }
     var searchedListOfNotes = [NoteInfoApi]()
@@ -52,6 +55,8 @@ class NoteListCollectionViewController: UICollectionViewController, NoteView {
                                                name: NSNotification.Name("SideMenuView"),
                                                object: nil)
         
+       
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +73,7 @@ class NoteListCollectionViewController: UICollectionViewController, NoteView {
        }
     
     func getOriginalListOfNotes(listOfNotes: [NoteInfoApi]) {
+        print("Note view Controller")
           self.noteListToDisplay = listOfNotes
     }
     

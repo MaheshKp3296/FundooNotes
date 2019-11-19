@@ -30,5 +30,6 @@ protocol RESTNoteModel{
     func updateNote(noteInfo: NoteInfoApi)
     func delete(noteInfo: NoteInfoApi)
     func readListOfNotes(completion : @escaping ([NoteInfoApi]?,Error?)-> Void)
+   func getPostString(params:[String:Any]) -> String
     
 }
